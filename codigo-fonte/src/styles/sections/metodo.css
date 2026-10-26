@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Método · 4 etapas em cards encostados, ligadas por um fio terracota que se
+   desenha com a rolagem e acende o número de cada etapa ao chegar nela.
+   ≥1024: 4 colunas, fio horizontal contínuo · 640–1023: 2×2, um fio por
+   linha · <640: 1 coluna, fio vertical à esquerda.
+   ========================================================================== */
+.met {
+  --met-no: 9px;                                           /* diâmetro do nó */
+  --met-eixo: calc(var(--pad-card) + var(--met-no) / 2);   /* centro do nó */
+  display: grid;
+  gap: var(--gap);
+}
+
+/* ------------------------------------------------------------ Cabeçalho */
+.met-topo {
+  display: grid;
+  gap: var(--space-5);
+  align-items: end;
+}
+
+.met-apoio {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+@media (min-width: 1024px) {
+  .met-topo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    column-gap: var(--space-8);
+  }
+}
+
+/* ------------------------------------------------------------ Etapas */
+.met-grade {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+}
+
+.met-etapa {
+  display: flex;
+  flex-direction: column;
+  overflow: visible; /* o fio atravessa o respiro entre os cards */
+  padding-top: calc(var(--pad-card) + var(--met-no) + var(--space-6));
+  transition: background-color var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .met-etapa:hover {
+    background: var(--panel-2);
+  }
+}
+
+/* Nó sobre o fio */
+.met-no {
+  position: absolute;
+  top: var(--pad-card);
+  left: var(--pad-card);
+  z-index: 2;
+  width: var(--met-no);
+  height: var(--met-no);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-round);
+  background: var(--panel);
+  transition:
+    background-color 0.8s var(--ease-out),
+    border-color 0.8s var(--ease-out),
+    box-shadow 0.8s var(--ease-out);
+}
+
+/* Fio: trilho apagado + luz terracota (escala de 0 a 1) */
+.met-fio {
+  position: absolute;
+  top: var(--met-eixo);
+  left: 0;
+  right: calc(-1 * var(--gap));
+  z-index: 1;
+  height: 1px;
+  background: var(--line);
+  pointer-events: none;
+}
+
+.met-fio__luz {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+html.js-motion .met-fio__luz {
+  transform: scaleX(0);
+}
+
+/* Número grande e fino */
+.met-num {
+  display: block;
+  color: var(--soft);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2.2rem + 2.8vw, 5.25rem);
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+  transition: color 1s var(--ease-out);
+}
+
+.met-etapa h3 {
+  margin-top: var(--space-7);
+}
+
+.met-etapa p {
+  margin-top: var(--space-3);
+  max-width: 34ch;
+  color: var(--muted);
+}
+
+/* Etapa acesa (o fio chegou nela) */
+.met-etapa.is-ativa .met-num,
+html:not(.js-motion) .met-num {
+  color: var(--text);
+}
+
+.met-etapa.is-ativa .met-no,
+html:not(.js-motion) .met-no {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(217, 88, 63, 0.16);
+}
+
+/* 1 coluna: fio vertical à esquerda, conteúdo recuado */
+@media (max-width: 639px) {
+  .met-etapa {
+    padding-top: var(--pad-card);
+    padding-left: calc(var(--pad-card) + var(--met-no) + var(--space-5));
+  }
+
+  .met-fio {
+    top: 0;
+    bottom: calc(-1 * var(--gap));
+    left: var(--met-eixo);
+    right: auto;
+    width: 1px;
+    height: auto;
+    transform: translateX(-50%);
+  }
+
+  .met-fio__luz {
+    transform-origin: center top;
+  }
+
+  html.js-motion .met-fio__luz {
+    transform: scaleY(0);
+  }
+
+  .met-etapa:first-child .met-fio {
+    top: var(--met-eixo);
+  }
+
+  .met-etapa:last-child .met-fio {
+    bottom: var(--pad-card);
+  }
+
+  .met-num {
+    margin-top: -0.06em;
+  }
+
+  .met-etapa h3 {
+    margin-top: var(--space-5);
+  }
+}
+
+/* 2×2: um fio por linha */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .met-grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .met-etapa:nth-child(odd) .met-fio {
+    left: var(--met-eixo);
+  }
+
+  .met-etapa:nth-child(even) .met-fio {
+    right: var(--pad-card);
+  }
+}
+
+/* 4 colunas: fio contínuo do primeiro ao último nó */
+@media (min-width: 1024px) {
+  .met-grade {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .met-etapa {
+    min-height: 340px;
+  }
+
+  .met-etapa h3 {
+    margin-top: auto;
+    padding-top: var(--space-7);
+  }
+
+  .met-etapa:first-child .met-fio {
+    left: var(--met-eixo);
+  }
+
+  .met-etapa:last-child .met-fio {
+    right: var(--pad-card);
+  }
+}
+
+/* ------------------------------------------------------------ Chamada */
+.met-chamada {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.met-chamada__texto {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.met-chamada__texto p {
+  color: var(--text-2);
+}
+
+@media (max-width: 639px) {
+  .met-chamada .btn {
+    width: 100%;
+  }
+}

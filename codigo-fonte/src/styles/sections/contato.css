@@ -1,0 +1,531 @@
+/* ==========================================================================
+   Contato · fechamento "VAMOS CONVERSAR" + foto e cards de informação,
+   rodapé (wordmark cortado embaixo) e botão flutuante de WhatsApp.
+   ========================================================================== */
+.contato {
+  display: grid;
+  gap: var(--gap);
+  padding-top: var(--pad-sec);
+}
+
+/* ------------------------------------------------------------ Cabeçalho */
+.contato-cabeca {
+  display: grid;
+  gap: var(--space-5);
+  padding: 0 var(--pad-card) var(--space-6);
+}
+
+.contato-cabeca__titulo {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.contato-titulo {
+  font-size: clamp(2.6rem, 0.4rem + 9.4vw, 8.5rem);
+  font-weight: 200;
+  line-height: 0.94;
+  letter-spacing: var(--track-hero);
+  text-wrap: wrap;
+}
+
+.contato-apoio {
+  max-width: 38ch;
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------ Grade */
+.contato-grade {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.contato-foto {
+  aspect-ratio: 4 / 3;
+}
+
+.contato-foto__in {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+}
+
+.contato-foto__in > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+html.js-motion .contato-foto {
+  clip-path: inset(7% 7% 7% 7% round var(--r-img));
+}
+
+html.js-motion .contato-foto__in > img {
+  transform: scale(1.12);
+}
+
+.contato-legenda {
+  position: absolute;
+  inset: auto 0 0;
+  padding: var(--space-8) var(--pad-card) var(--pad-card);
+  background: linear-gradient(to top, rgba(11, 11, 12, 0.78), rgba(11, 11, 12, 0));
+  pointer-events: none;
+}
+
+.contato-legenda .rotulo {
+  color: var(--text-2);
+}
+
+/* Cards de informação */
+.contato-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap);
+}
+
+.contato-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  min-height: 176px;
+  transition: background-color var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-card:hover {
+    background: var(--panel-2);
+  }
+}
+
+.contato-card__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.contato-card__corpo {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contato-destaque {
+  color: var(--text);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  font-style: normal;
+  line-height: 1.45;
+}
+
+.contato-junto {
+  white-space: nowrap;
+}
+
+address.contato-destaque > span {
+  display: block;
+}
+
+.contato-nota {
+  max-width: 38ch;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* Selo "Aberto agora / Fechado agora" (fuso de São Paulo) */
+.contato-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-pill);
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contato-selo[hidden] {
+  display: none;
+}
+
+.contato-selo__ponto {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-round);
+  background: var(--soft);
+}
+
+.contato-selo.is-aberto {
+  color: var(--text-2);
+}
+
+.contato-selo.is-aberto .contato-selo__ponto {
+  background: #8fbf95;
+}
+
+.contato-selo.is-aberto .contato-selo__ponto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: contato-pulso 2.8s var(--ease-out) infinite;
+}
+
+@keyframes contato-pulso {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contato-selo.is-aberto .contato-selo__ponto::after {
+    display: none;
+  }
+}
+
+/* Canais */
+.contato-canais {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.contato-canais li {
+  display: grid;
+  gap: 2px;
+}
+
+.contato-canal {
+  justify-self: start;
+  color: var(--text);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.45;
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  overflow-wrap: anywhere;
+  transition: text-decoration-color var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-canal:hover {
+    text-decoration-color: var(--accent);
+  }
+}
+
+/* Botão principal: faixa terracota */
+.contato-cta.btn {
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 var(--pad-card);
+  border-radius: var(--r-card);
+}
+
+.contato-cta__seta {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-cta:hover .contato-cta__seta {
+    transform: rotate(45deg);
+  }
+}
+
+/* ------------------------------------------------------------ Rodapé */
+.contato-rodape {
+  position: relative;
+  container-type: inline-size;
+  margin-top: var(--space-8);
+  padding: var(--space-6) var(--pad-card) 0;
+  overflow: clip;
+  border-top: 1px solid var(--line);
+}
+
+.contato-rodape__topo {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.contato-rodape__nome {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contato-rodape__nome span {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+}
+
+.contato-rodape__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-5);
+  margin: 0;
+}
+
+.contato-rodape__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-rodape__nav a:hover {
+    color: var(--text);
+  }
+}
+
+/* "Voltar ao topo": a seta ↗ do componente vira ↑ */
+.contato-subir {
+  justify-self: start;
+  min-height: 44px;
+}
+
+.contato-subir .seta-link__circulo svg {
+  transform: rotate(-45deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-subir:hover .seta-link__circulo svg {
+    transform: rotate(-45deg) translate(1px, -1px);
+  }
+}
+
+.contato-rodape__linha {
+  height: 1px;
+  margin: var(--space-5) 0 var(--space-5);
+  border: 0;
+  background: var(--line);
+}
+
+.contato-rodape__legal {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* Wordmark gigante, cinza muito escuro, cortado pela borda de baixo */
+.contato-marca {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-7) 0 0;
+  color: #1c1c1e;
+  font-family: var(--font-display);
+  font-size: 24.6cqi;
+  font-weight: 200;
+  line-height: 0.74;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  margin-bottom: -0.1em;
+}
+
+.contato-marca > span {
+  display: block;
+}
+
+html.js-motion .contato-marca > span {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+/* ------------------------------------------------------------ Flutuante */
+.contato-flutua {
+  position: fixed;
+  right: max(16px, calc(env(safe-area-inset-right) + 12px));
+  bottom: max(16px, calc(env(safe-area-inset-bottom) + 12px));
+  z-index: var(--z-flutua);
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-card);
+  background: var(--panel-3);
+  color: var(--text);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.8s var(--ease-out),
+    visibility 0s linear 0.8s,
+    background-color var(--dur) var(--ease-out);
+}
+
+.contato-flutua.is-visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.8s var(--ease-out),
+    visibility 0s,
+    background-color var(--dur) var(--ease-out);
+}
+
+.contato-flutua > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contato-flutua__rotulo {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: var(--panel-3);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(8px, -50%);
+  pointer-events: none;
+  transition:
+    opacity 0.4s var(--ease-out),
+    transform 0.6s var(--ease-out);
+}
+
+.contato-flutua:focus-visible .contato-flutua__rotulo {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contato-flutua:hover {
+    background: #39393c;
+  }
+
+  .contato-flutua:hover .contato-flutua__rotulo {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+/* ------------------------------------------------------------ Telas */
+@media (min-width: 640px) {
+  .contato-info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contato-card--endereco,
+  .contato-cta {
+    grid-column: 1 / -1;
+  }
+
+  .contato-foto {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 768px) {
+  .contato-rodape__topo {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-6);
+  }
+
+  .contato-rodape__nav ul {
+    justify-content: center;
+  }
+
+  .contato-rodape__legal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
+    column-gap: var(--space-7);
+  }
+
+  .contato-rodape__legal p:nth-child(n + 3) {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contato-grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contato-foto {
+    aspect-ratio: auto;
+    min-height: 540px;
+  }
+
+  .contato-info {
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto;
+  }
+
+  .contato-cta.btn {
+    min-height: 72px;
+  }
+}
+
+/* Título e apoio lado a lado só quando "CONVERSAR" cabe inteiro */
+@media (min-width: 1440px) {
+  .contato-cabeca {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: var(--space-7);
+  }
+
+  .contato-titulo {
+    font-size: 8.5rem;
+  }
+
+  .contato-apoio {
+    max-width: 34ch;
+    padding-bottom: 0.5em;
+  }
+}

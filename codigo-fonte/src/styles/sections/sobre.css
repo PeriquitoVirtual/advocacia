@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Sobre · #escritorio
+   Card (≈55%) + foto 4:5 (≈45%) encostados. Mobile: foto em cima.
+   ========================================================================== */
+.sobre-grade {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sobre-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.sobre-card__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.sobre-card__meta {
+  color: var(--soft);
+}
+
+.sobre-card__corpo {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-6);
+}
+
+.sobre-titulo {
+  max-width: 22ch;
+}
+
+.sobre-colunas {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 62ch;
+}
+
+.sobre-coluna {
+  color: var(--muted);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+.sobre-btn {
+  margin-top: var(--space-2);
+}
+
+/* ------------------------------------------------------------ Foto */
+.sobre-foto {
+  min-width: 0;
+  justify-self: stretch;
+  order: -1;
+  aspect-ratio: 4 / 5;
+  isolation: isolate;
+}
+
+.sobre-foto__mov {
+  position: absolute;
+  inset: -48px 0;
+  will-change: transform;
+}
+
+.sobre-foto__zoom {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.sobre-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  transform-origin: 50% 60%;
+}
+
+/* Vinheta discreta para casar com o carvão dos cards */
+.sobre-foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(11, 11, 12, 0) 55%, rgba(11, 11, 12, 0.35) 100%);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sobre-grade:hover .sobre-foto__zoom {
+    transform: scale(1.04);
+  }
+}
+
+.sobre-grade:focus-within .sobre-foto__zoom {
+  transform: scale(1.04);
+}
+
+/* Estados iniciais (só com movimento ligado) */
+html.js-motion .sobre-foto {
+  clip-path: inset(100% 0% 0% 0% round var(--r-img));
+}
+
+html.js-motion .sobre-foto img {
+  transform: scale(1.12);
+}
+
+html.js-motion .sobre-coluna {
+  opacity: 0;
+}
+
+/* ------------------------------------------------------------ Tablet */
+@media (min-width: 600px) and (max-width: 879.98px) {
+  .sobre-foto {
+    aspect-ratio: 3 / 2;
+  }
+
+  .sobre-colunas {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-6);
+    max-width: none;
+  }
+}
+
+/* ------------------------------------------------------------ Lado a lado */
+@media (min-width: 880px) {
+  .sobre-grade {
+    grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+    align-items: stretch;
+  }
+
+  .sobre-foto {
+    order: 0;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sobre-colunas {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-7);
+    max-width: none;
+  }
+
+  .sobre-coluna {
+    font-size: var(--fs-sm);
+    max-width: 34ch;
+  }
+}
+
+@media (min-width: 1280px) {
+  .sobre-coluna {
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre-foto__mov {
+    inset: 0;
+  }
+
+  .sobre-foto__zoom {
+    transition: none;
+  }
+}

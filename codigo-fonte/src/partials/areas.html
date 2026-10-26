@@ -1,0 +1,263 @@
+<!-- =====================================================================
+     Áreas · id "areas" — cabeçalho solto sobre o preto + 3 linhas que
+     alternam foto grande e dois cards (como "OUR ADVANTAGES"). Cada card
+     abre a lista de serviços da área ("Explorar"). Fecha com um card largo.
+     ===================================================================== -->
+<section id="areas" class="areas" data-dobra="areas" aria-labelledby="areas-titulo">
+  <header class="secao areas-cabeca">
+    <div class="cabeca">
+      <span class="rotulo" data-reveal="fade">Áreas de atuação</span>
+      <h2 id="areas-titulo" data-split>Como podemos ajudar</h2>
+    </div>
+    <p class="areas-apoio" data-reveal data-reveal-delay="0.15">
+      Atuação consultiva e contenciosa em seis áreas, para empresas e pessoas. Cada frente é
+      acompanhada diretamente por um dos sócios.
+    </p>
+  </header>
+
+  <div class="areas-linhas">
+    <div class="grade areas-linha">
+      <figure class="foto areas-foto">
+        <div class="areas-foto__mov">
+          <div class="areas-foto__zoom">
+            <img
+              src="/src/assets/img/area-lobby-1200.webp"
+              srcset="
+                /src/assets/img/area-lobby-480.webp   480w,
+                /src/assets/img/area-lobby-800.webp   800w,
+                /src/assets/img/area-lobby-1200.webp 1200w,
+                /src/assets/img/area-lobby-1600.webp 1600w
+              "
+              sizes="(min-width: 1440px) 700px, (min-width: 760px) 50vw, 100vw"
+              width="1600"
+              height="1195"
+              loading="lazy"
+              decoding="async"
+              alt="Advogada de terno claro parada no centro de um lobby corporativo escuro, com pessoas passando ao redor"
+            />
+          </div>
+        </div>
+      </figure>
+      <div class="areas-cards">
+        <article class="card areas-card" aria-labelledby="area-empresarial-titulo">
+          <div class="areas-card__topo">
+            <h3 id="area-empresarial-titulo">Empresarial e Societário</h3>
+            <span class="areas-card__num" aria-hidden="true">01</span>
+          </div>
+          <div class="areas-card__corpo">
+            <p class="areas-card__desc">Estruturação de empresas, relação entre sócios e operações societárias, com atenção à governança e ao longo prazo.</p>
+            <button
+              type="button"
+              class="seta-link areas-card__botao"
+              aria-expanded="false"
+              aria-controls="area-empresarial-servicos"
+            >
+              <span class="seta-link__circulo" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l6-6M4 3h5v5"/></svg></span>
+              <span class="seta-link__texto">Explorar<span class="sr-only"> os serviços da área Empresarial e Societário</span></span>
+            </button>
+          </div>
+          <div class="areas-card__painel" id="area-empresarial-servicos" hidden>
+            <ul class="areas-card__lista" role="list" aria-label="Serviços da área Empresarial e Societário">
+              <li><span class="areas-card__idx" aria-hidden="true">01</span>Constituição e reorganização societária</li>
+              <li><span class="areas-card__idx" aria-hidden="true">02</span>Acordos de sócios e de quotistas</li>
+              <li><span class="areas-card__idx" aria-hidden="true">03</span>M&amp;A de pequeno e médio porte</li>
+              <li><span class="areas-card__idx" aria-hidden="true">04</span>Governança corporativa</li>
+              <li><span class="areas-card__idx" aria-hidden="true">05</span>Saída e retirada de sócios</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card areas-card" aria-labelledby="area-contratos-titulo">
+          <div class="areas-card__topo">
+            <h3 id="area-contratos-titulo">Contratos</h3>
+            <span class="areas-card__num" aria-hidden="true">02</span>
+          </div>
+          <div class="areas-card__corpo">
+            <p class="areas-card__desc">Contratos claros e equilibrados, redigidos e negociados para prevenir conflitos e dar segurança à relação comercial.</p>
+            <button
+              type="button"
+              class="seta-link areas-card__botao"
+              aria-expanded="false"
+              aria-controls="area-contratos-servicos"
+            >
+              <span class="seta-link__circulo" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l6-6M4 3h5v5"/></svg></span>
+              <span class="seta-link__texto">Explorar<span class="sr-only"> os serviços da área Contratos</span></span>
+            </button>
+          </div>
+          <div class="areas-card__painel" id="area-contratos-servicos" hidden>
+            <ul class="areas-card__lista" role="list" aria-label="Serviços da área Contratos">
+              <li><span class="areas-card__idx" aria-hidden="true">01</span>Elaboração e revisão de contratos</li>
+              <li><span class="areas-card__idx" aria-hidden="true">02</span>Negociação entre as partes</li>
+              <li><span class="areas-card__idx" aria-hidden="true">03</span>Contratos internacionais</li>
+              <li><span class="areas-card__idx" aria-hidden="true">04</span>Disputas contratuais</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="grade areas-linha areas-linha--inv">
+      <figure class="foto areas-foto">
+        <div class="areas-foto__mov">
+          <div class="areas-foto__zoom">
+            <img
+              src="/src/assets/img/area-contrato-1200.webp"
+              srcset="
+                /src/assets/img/area-contrato-480.webp   480w,
+                /src/assets/img/area-contrato-800.webp   800w,
+                /src/assets/img/area-contrato-1200.webp 1200w,
+                /src/assets/img/area-contrato-1600.webp 1600w
+              "
+              sizes="(min-width: 1440px) 700px, (min-width: 760px) 50vw, 100vw"
+              width="1600"
+              height="1195"
+              loading="lazy"
+              decoding="async"
+              alt="Mão assinando um contrato com caneta-tinteiro sobre mesa de nogueira, sob a luz de um abajur de latão"
+            />
+          </div>
+        </div>
+      </figure>
+      <div class="areas-cards">
+        <article class="card areas-card" aria-labelledby="area-trabalhista-titulo">
+          <div class="areas-card__topo">
+            <h3 id="area-trabalhista-titulo">Trabalhista empresarial</h3>
+            <span class="areas-card__num" aria-hidden="true">03</span>
+          </div>
+          <div class="areas-card__corpo">
+            <p class="areas-card__desc">Orientação preventiva na gestão de pessoas e defesa técnica da empresa nas relações de trabalho.</p>
+            <button
+              type="button"
+              class="seta-link areas-card__botao"
+              aria-expanded="false"
+              aria-controls="area-trabalhista-servicos"
+            >
+              <span class="seta-link__circulo" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l6-6M4 3h5v5"/></svg></span>
+              <span class="seta-link__texto">Explorar<span class="sr-only"> os serviços da área Trabalhista empresarial</span></span>
+            </button>
+          </div>
+          <div class="areas-card__painel" id="area-trabalhista-servicos" hidden>
+            <ul class="areas-card__lista" role="list" aria-label="Serviços da área Trabalhista empresarial">
+              <li><span class="areas-card__idx" aria-hidden="true">01</span>Consultoria preventiva</li>
+              <li><span class="areas-card__idx" aria-hidden="true">02</span>Compliance trabalhista</li>
+              <li><span class="areas-card__idx" aria-hidden="true">03</span>Defesa em reclamações trabalhistas</li>
+              <li><span class="areas-card__idx" aria-hidden="true">04</span>Negociação coletiva com sindicatos</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card areas-card" aria-labelledby="area-tributario-titulo">
+          <div class="areas-card__topo">
+            <h3 id="area-tributario-titulo">Tributário</h3>
+            <span class="areas-card__num" aria-hidden="true">04</span>
+          </div>
+          <div class="areas-card__corpo">
+            <p class="areas-card__desc">Leitura do custo tributário da operação e atuação nas discussões administrativas e judiciais com o Fisco.</p>
+            <button
+              type="button"
+              class="seta-link areas-card__botao"
+              aria-expanded="false"
+              aria-controls="area-tributario-servicos"
+            >
+              <span class="seta-link__circulo" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l6-6M4 3h5v5"/></svg></span>
+              <span class="seta-link__texto">Explorar<span class="sr-only"> os serviços da área Tributário</span></span>
+            </button>
+          </div>
+          <div class="areas-card__painel" id="area-tributario-servicos" hidden>
+            <ul class="areas-card__lista" role="list" aria-label="Serviços da área Tributário">
+              <li><span class="areas-card__idx" aria-hidden="true">01</span>Planejamento tributário</li>
+              <li><span class="areas-card__idx" aria-hidden="true">02</span>Contencioso administrativo e judicial</li>
+              <li><span class="areas-card__idx" aria-hidden="true">03</span>Recuperação de créditos tributários</li>
+              <li><span class="areas-card__idx" aria-hidden="true">04</span>Regimes especiais de tributação</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="grade areas-linha">
+      <figure class="foto areas-foto">
+        <div class="areas-foto__mov">
+          <div class="areas-foto__zoom">
+            <img
+              src="/src/assets/img/area-escritorio-1200.webp"
+              srcset="
+                /src/assets/img/area-escritorio-480.webp   480w,
+                /src/assets/img/area-escritorio-800.webp   800w,
+                /src/assets/img/area-escritorio-1200.webp 1200w,
+                /src/assets/img/area-escritorio-1600.webp 1600w
+              "
+              sizes="(min-width: 1440px) 700px, (min-width: 760px) 50vw, 100vw"
+              width="1600"
+              height="1195"
+              loading="lazy"
+              decoding="async"
+              alt="Escritório à noite com poltrona de couro vinho, mesa de trabalho e a cidade iluminada pela janela"
+            />
+          </div>
+        </div>
+      </figure>
+      <div class="areas-cards">
+        <article class="card areas-card" aria-labelledby="area-familia-titulo">
+          <div class="areas-card__topo">
+            <h3 id="area-familia-titulo">Família e Sucessões</h3>
+            <span class="areas-card__num" aria-hidden="true">05</span>
+          </div>
+          <div class="areas-card__corpo">
+            <p class="areas-card__desc">Questões de família e patrimônio conduzidas com discrição, cuidado e planejamento entre gerações.</p>
+            <button
+              type="button"
+              class="seta-link areas-card__botao"
+              aria-expanded="false"
+              aria-controls="area-familia-servicos"
+            >
+              <span class="seta-link__circulo" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l6-6M4 3h5v5"/></svg></span>
+              <span class="seta-link__texto">Explorar<span class="sr-only"> os serviços da área Família e Sucessões</span></span>
+            </button>
+          </div>
+          <div class="areas-card__painel" id="area-familia-servicos" hidden>
+            <ul class="areas-card__lista" role="list" aria-label="Serviços da área Família e Sucessões">
+              <li><span class="areas-card__idx" aria-hidden="true">01</span>Divórcio e partilha de bens</li>
+              <li><span class="areas-card__idx" aria-hidden="true">02</span>Inventário e testamento</li>
+              <li><span class="areas-card__idx" aria-hidden="true">03</span>Planejamento sucessório</li>
+              <li><span class="areas-card__idx" aria-hidden="true">04</span>Holding familiar</li>
+              <li><span class="areas-card__idx" aria-hidden="true">05</span>Acordos pré-nupciais</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card areas-card" aria-labelledby="area-imobiliario-titulo">
+          <div class="areas-card__topo">
+            <h3 id="area-imobiliario-titulo">Imobiliário</h3>
+            <span class="areas-card__num" aria-hidden="true">06</span>
+          </div>
+          <div class="areas-card__corpo">
+            <p class="areas-card__desc">Segurança jurídica na compra, venda, locação e regularização de imóveis residenciais e comerciais.</p>
+            <button
+              type="button"
+              class="seta-link areas-card__botao"
+              aria-expanded="false"
+              aria-controls="area-imobiliario-servicos"
+            >
+              <span class="seta-link__circulo" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 9l6-6M4 3h5v5"/></svg></span>
+              <span class="seta-link__texto">Explorar<span class="sr-only"> os serviços da área Imobiliário</span></span>
+            </button>
+          </div>
+          <div class="areas-card__painel" id="area-imobiliario-servicos" hidden>
+            <ul class="areas-card__lista" role="list" aria-label="Serviços da área Imobiliário">
+              <li><span class="areas-card__idx" aria-hidden="true">01</span>Compra e venda de imóveis</li>
+              <li><span class="areas-card__idx" aria-hidden="true">02</span>Due diligence imobiliária</li>
+              <li><span class="areas-card__idx" aria-hidden="true">03</span>Locação comercial</li>
+              <li><span class="areas-card__idx" aria-hidden="true">04</span>Incorporação e regularização</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="card areas-fecho" data-reveal>
+    <p class="areas-fecho__texto">
+      <span class="areas-fecho__pergunta">Sua questão não está aqui?</span>
+      Fale com o escritório para entender se podemos ajudar.
+    </p>
+    <a class="btn btn--acento btn--grande" data-wa="areas" href="#contato">
+      <span class="btn__rotulo">Fale conosco</span>
+    </a>
+  </div>
+</section>

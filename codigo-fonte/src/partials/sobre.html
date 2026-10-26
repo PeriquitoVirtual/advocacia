@@ -1,0 +1,56 @@
+<!-- =====================================================================
+     Sobre · id "escritorio" — card com título + texto em duas colunas,
+     encostado na foto da escada (como "ABOUT" da referência).
+     ===================================================================== -->
+<section id="escritorio" class="sobre" data-dobra="sobre" aria-labelledby="escritorio-titulo">
+  <div class="grade sobre-grade">
+    <div class="card sobre-card">
+      <div class="sobre-card__topo">
+        <span class="rotulo" data-reveal="fade">Escritório</span>
+        <span class="rotulo sobre-card__meta" data-reveal="fade" data-reveal-delay="0.1">Desde 2004 · São Paulo</span>
+      </div>
+
+      <div class="sobre-card__corpo">
+        <h2 id="escritorio-titulo" class="sobre-titulo" data-split>Onde a técnica encontra a estratégia</h2>
+
+        <div class="sobre-colunas">
+          <p class="sobre-coluna">
+            Fundado em 2004, em São Paulo, o escritório atua de forma consultiva e contenciosa para
+            empresas e pessoas. Cada assunto é acompanhado de perto por um dos sócios, do primeiro
+            contato à conclusão.
+          </p>
+          <p class="sobre-coluna">
+            Antes de agir, planejamos: entendemos o contexto, explicamos alternativas e riscos com
+            clareza e só então definimos o caminho. O sigilo orienta cada etapa do trabalho.
+          </p>
+        </div>
+
+        <a class="btn btn--contorno sobre-btn" href="#equipe" data-reveal="fade" data-reveal-delay="0.2">
+          <span class="btn__rotulo">Conheça a equipe</span>
+        </a>
+      </div>
+    </div>
+
+    <figure class="foto sobre-foto">
+      <div class="sobre-foto__mov">
+        <div class="sobre-foto__zoom">
+          <img
+            src="/src/assets/img/sobre-escada-1200.webp"
+            srcset="
+              /src/assets/img/sobre-escada-480.webp   480w,
+              /src/assets/img/sobre-escada-800.webp   800w,
+              /src/assets/img/sobre-escada-1200.webp 1200w,
+              /src/assets/img/sobre-escada-1600.webp 1600w
+            "
+            sizes="(min-width: 1440px) 620px, (min-width: 880px) 44vw, 100vw"
+            width="1600"
+            height="1986"
+            loading="lazy"
+            decoding="async"
+            alt="Advogada de casaco cinza descendo a escada de pedra de um fórum antigo, com corrimão de latão"
+          />
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>

@@ -1,0 +1,279 @@
+/* ==========================================================================
+   Base · reset, tipografia, moldura da página e estados de animação
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  padding: 0;
+  list-style: none;
+}
+
+/* Títulos: caixa alta, finos e espaçados (como "WHERE FASHION MEETS FREEDOM") */
+h1,
+h2 {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 300;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-hero);
+  font-weight: 200;
+  line-height: 0.95;
+  letter-spacing: var(--track-hero);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.08;
+  letter-spacing: var(--track-title);
+}
+
+/* Títulos de card: condensados, caixa alta ("INDEPENDENCY") */
+h3 {
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-decoration: none;
+  text-transform: uppercase;
+  transform: translateY(-160%);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* ------------------------------------------------------------ Moldura
+   <main class="quadro"> é a "página" da referência: uma coluna centralizada
+   onde cada dobra é um bloco de cards encostados (gap 8px).             */
+.quadro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--frame);
+}
+
+/* Bloco de seção sem card (texto solto sobre o preto, como "OUR ADVANTAGES") */
+.secao {
+  position: relative;
+  padding: var(--pad-sec) var(--pad-card) var(--space-6);
+}
+
+/* Card carvão */
+.card {
+  position: relative;
+  border-radius: var(--r-card);
+  background: var(--panel);
+  padding: var(--pad-card);
+  overflow: clip;
+}
+
+/* Grade de cards encostados */
+.grade {
+  display: grid;
+  gap: var(--gap);
+}
+
+/* Foto em card (cobre a área) */
+.foto {
+  position: relative;
+  border-radius: var(--r-img);
+  overflow: clip;
+  background: var(--panel);
+}
+
+.foto > img,
+.foto > video,
+.foto > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cabeçalho de dobra: rótulo + título (+ apoio) */
+.cabeca {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  max-width: 760px;
+}
+
+.cabeca .apoio {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------ Animação
+   Estado inicial dos reveals SÓ com html.js-motion.                     */
+html.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+html.js-motion [data-reveal='fade'] {
+  transform: none;
+}
+
+html.js-motion [data-reveal='scale'] {
+  transform: scale(0.97);
+}
+
+/* A máscara corta tudo fora da linha: o respiro em cima guarda os acentos
+   das maiúsculas (É, Ã, Ç); o de baixo, as descendentes. */
+.split-line-mask {
+  padding-block: 0.22em 0.1em;
+  margin-block: -0.22em -0.1em;
+}
+
+html.js-motion [data-split]:not(.is-split) {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

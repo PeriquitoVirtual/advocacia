@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Varela Advocacia · Direito empresarial, civil e de família em São Paulo</title>
+    <meta
+      name="description"
+      content="Varela Advocacia: atuação empresarial, contratos, trabalhista, tributário, família e sucessões e imobiliário em São Paulo. Agende uma reunião com o escritório."
+    />
+    <meta name="theme-color" content="#0b0b0c" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Varela Advocacia · São Paulo" />
+    <meta property="og:description" content="Direito com técnica, ética e estratégia." />
+    <link rel="icon" href="/src/assets/favicon.svg" type="image/svg+xml" />
+    <!-- Antes da pintura: liga os estados iniciais das animações. Se o JS de
+         movimento não subir em 8s, desliga, para nada ficar invisível. -->
+    <script>
+      (function () {
+        var h = document.documentElement;
+        h.classList.add('js');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          h.classList.add('js-motion');
+          setTimeout(function () {
+            if (!window.__movimentoOk) h.classList.remove('js-motion');
+          }, 8000);
+        }
+      })();
+    </script>
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "Varela Advocacia",
+        "description": "Escritório de advocacia em São Paulo.",
+        "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <main id="conteudo" class="quadro">
+      <!-- @include partials/topo.html -->
+      <!-- @include partials/pilares.html -->
+      <!-- @include partials/sobre.html -->
+      <!-- @include partials/areas.html -->
+      <!-- @include partials/metodo.html -->
+      <!-- @include partials/equipe.html -->
+      <!-- @include partials/duvidas.html -->
+      <!-- @include partials/contato.html -->
+    </main>
+  </body>
+</html>

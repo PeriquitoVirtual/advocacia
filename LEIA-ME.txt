@@ -1,0 +1,7 @@
+Página pronta na raiz deste pacote. Publique os arquivos preservando as pastas.
+Para visualizar localmente, inicie um servidor HTTP nesta pasta:
+  python3 -m http.server 8080
+Abra http://localhost:8080. Abrir por file:// pode bloquear módulos JavaScript.
+O projeto editável está em codigo-fonte. Em projetos React/Vite, execute npm ci
+e npm run dev nessa pasta. Após editar, npm run build gera a pasta dist.
+Personalize marca, textos, contatos, valores e imagens antes de publicar.

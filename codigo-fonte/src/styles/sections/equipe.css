@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Equipe · 3 sócios em cards encostados. Retrato 3:4 em escala de cinza que
+   ganha cor e aproxima no hover/foco; faixa com a trajetória sobe do pé do
+   retrato (hover ou botão "Trajetória"). Celular: carrossel com scroll-snap.
+   ========================================================================== */
+.eq {
+  display: grid;
+  gap: var(--gap);
+}
+
+/* ------------------------------------------------------------ Cabeçalho */
+.eq-topo {
+  display: grid;
+  gap: var(--space-5);
+  align-items: end;
+}
+
+.eq-apoio {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+@media (min-width: 1024px) {
+  .eq-topo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    column-gap: var(--space-8);
+  }
+}
+
+/* ------------------------------------------------------------ Grade */
+.eq-grade {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.eq-item {
+  display: flex;
+  min-width: 0;
+}
+
+.eq-socio {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  transition: background-color var(--dur) var(--ease-out);
+}
+
+/* ------------------------------------------------------------ Retrato */
+.eq-foto {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  background: #141415;
+}
+
+.eq-zoom {
+  position: absolute;
+  inset: 0;
+  transition: transform 1.4s var(--ease-out);
+}
+
+.eq-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: grayscale(1) contrast(1.04) brightness(0.92);
+  transition: filter 1.4s var(--ease-out);
+}
+
+/* Faixa da trajetória */
+.eq-bio {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--pad-card) var(--pad-card);
+  border-top: 1px solid var(--line);
+  background: rgba(14, 14, 15, 0.9);
+  transform: translateY(101%);
+  transition: transform 0.9s var(--ease-out);
+}
+
+.eq-bio p {
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* Estados: hover (mouse), foco dentro do card e aberto pelo botão */
+.eq-socio:focus-within .eq-zoom,
+.eq-socio.is-aberto .eq-zoom {
+  transform: scale(1.04);
+}
+
+.eq-socio:focus-within .eq-zoom img,
+.eq-socio.is-aberto .eq-zoom img {
+  filter: grayscale(0) contrast(1) brightness(1);
+}
+
+.eq-socio.is-aberto .eq-bio {
+  transform: translateY(0);
+}
+
+.eq-socio.is-aberto,
+.eq-socio:focus-within {
+  background: var(--panel-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .eq-socio:hover {
+    background: var(--panel-2);
+  }
+
+  .eq-socio:hover .eq-zoom {
+    transform: scale(1.04);
+  }
+
+  .eq-socio:hover .eq-zoom img {
+    filter: grayscale(0) contrast(1) brightness(1);
+  }
+
+  .eq-socio:hover .eq-bio {
+    transform: translateY(0);
+  }
+
+  .eq-socio:hover .eq-mais {
+    color: var(--text);
+  }
+}
+
+/* Entrada: máscara abre de baixo para cima (só com movimento) */
+html.js-motion .eq-foto {
+  clip-path: inset(100% 0 0 0);
+}
+
+/* ------------------------------------------------------------ Informações */
+.eq-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--pad-card);
+}
+
+.eq-area {
+  margin-top: var(--space-1);
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+}
+
+.eq-oab {
+  margin-top: var(--space-4);
+}
+
+.eq-perfil {
+  margin: var(--space-3) 0 var(--space-4);
+  max-width: 40ch;
+  color: var(--muted);
+}
+
+.eq-mais {
+  margin-top: auto;
+  min-height: 44px;
+}
+
+.eq-mais:focus-visible {
+  outline-offset: 4px;
+}
+
+/* ------------------------------------------------------------ Rodapé */
+.eq-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+  padding: var(--space-6) var(--pad-card) 0;
+  border-top: 1px solid var(--line);
+}
+
+.eq-rodape p {
+  max-width: 60ch;
+  color: var(--text-2);
+  font-size: var(--fs-lead);
+}
+
+/* Indicador do carrossel (só no celular) */
+.eq-deslize {
+  display: none;
+}
+
+/* ------------------------------------------------------------ Tablet */
+@media (max-width: 1023px) {
+  .eq-area {
+    font-size: 0.875rem;
+  }
+}
+
+/* ------------------------------------------------------------ Celular: carrossel */
+@media (max-width: 767px) {
+  .eq-grade {
+    display: flex;
+    gap: var(--gap);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .eq-grade::-webkit-scrollbar {
+    display: none;
+  }
+
+  .eq-item {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+
+  .eq-deslize {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--pad-card) 0;
+  }
+
+  .eq-trilho {
+    position: relative;
+    flex: 1;
+    height: 1px;
+    background: var(--line-2);
+  }
+
+  .eq-trilho__luz {
+    position: absolute;
+    inset: 0;
+    background: var(--text);
+    transform: scaleX(0.4);
+    transform-origin: left center;
+  }
+
+  .eq-rodape .btn {
+    width: 100%;
+  }
+}

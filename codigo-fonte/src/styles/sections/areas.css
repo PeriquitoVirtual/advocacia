@@ -1,0 +1,306 @@
+/* ==========================================================================
+   Áreas · #areas
+   Cabeçalho solto sobre o preto + 3 linhas (foto | 2 cards, alternando),
+   tudo encostado com 8px. Card abre a lista de serviços ("Explorar").
+   ========================================================================== */
+.areas {
+  display: grid;
+  gap: var(--gap);
+}
+
+/* ------------------------------------------------------------ Cabeçalho */
+.areas-cabeca {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.areas-apoio {
+  max-width: 44ch;
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+@media (min-width: 1024px) {
+  .areas-cabeca {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: var(--space-8);
+  }
+
+  .areas-apoio {
+    max-width: 40ch;
+    padding-bottom: 0.35em;
+  }
+}
+
+/* ------------------------------------------------------------ Linhas */
+.areas-linhas {
+  display: grid;
+  gap: var(--gap);
+}
+
+.areas-linha {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.areas-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-width: 0;
+}
+
+/* ------------------------------------------------------------ Foto */
+.areas-foto {
+  min-width: 0;
+  justify-self: stretch;
+  aspect-ratio: 4 / 3;
+  isolation: isolate;
+}
+
+.areas-foto__mov {
+  position: absolute;
+  inset: -48px 0;
+  will-change: transform;
+}
+
+.areas-foto__zoom {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.areas-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.areas-foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(120% 90% at 50% 45%, rgba(11, 11, 12, 0) 55%, rgba(11, 11, 12, 0.38) 100%);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .areas-linha:hover .areas-foto__zoom {
+    transform: scale(1.04);
+  }
+}
+
+.areas-linha:focus-within .areas-foto__zoom {
+  transform: scale(1.04);
+}
+
+/* ------------------------------------------------------------ Card */
+.areas-card {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--space-6);
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease-out);
+}
+
+.areas-card__topo {
+  display: flex;
+  margin-bottom: auto;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.areas-card__num {
+  flex: none;
+  color: var(--soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  font-variant-numeric: tabular-nums;
+}
+
+.areas-card__corpo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+}
+
+.areas-card__desc {
+  flex: 1 1 260px;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.areas-card__botao {
+  flex: none;
+  margin-left: auto;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* Painel de serviços (altura animada pelo JS) */
+.areas-card__painel {
+  overflow: hidden;
+  margin-top: calc(var(--space-6) * -1);
+}
+
+.areas-card .areas-card__lista {
+  display: grid;
+  margin: 0;
+  padding: var(--space-6) 0 0;
+  column-gap: var(--space-6);
+}
+
+.areas-card__lista li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.areas-card__idx {
+  flex: none;
+  min-width: 1.6em;
+  color: var(--soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Estados: hover, foco, aberto */
+.areas-card.is-aberto,
+.areas-card:focus-within {
+  background: var(--panel-2);
+}
+
+.areas-card.is-aberto .seta-link,
+.areas-card:focus-within .seta-link {
+  color: var(--text);
+}
+
+.areas-card.is-aberto .seta-link__circulo {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .areas-card:hover {
+    background: var(--panel-2);
+  }
+
+  .areas-card:hover .seta-link {
+    color: var(--text);
+  }
+
+  .areas-card:hover .seta-link__circulo {
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .areas-card:hover .seta-link[aria-expanded='false'] .seta-link__circulo svg {
+    transform: rotate(45deg);
+  }
+}
+
+/* ------------------------------------------------------------ Fecho */
+.areas-fecho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5) var(--space-7);
+}
+
+.areas-fecho__texto {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+.areas-fecho__pergunta {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.875rem);
+  font-weight: 300;
+  letter-spacing: var(--track-title);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ Estados iniciais */
+html.js-motion .areas-foto {
+  clip-path: inset(0% 100% 0% 0% round var(--r-img));
+}
+
+html.js-motion .areas-linha--inv .areas-foto {
+  clip-path: inset(0% 0% 0% 100% round var(--r-img));
+}
+
+html.js-motion .areas-foto img {
+  transform: scale(1.12);
+}
+
+html.js-motion .areas-card {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* ------------------------------------------------------------ Lado a lado */
+@media (min-width: 760px) {
+  .areas-linha {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .areas-foto {
+    align-self: stretch;
+  }
+
+  .areas-linha--inv .areas-foto {
+    order: 2;
+  }
+}
+
+@media (min-width: 1100px) {
+  .areas-card__lista {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 759.98px) {
+  .areas-fecho .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .areas-foto__mov {
+    inset: 0;
+  }
+
+  .areas-foto__zoom,
+  .areas-card {
+    transition: none;
+  }
+}

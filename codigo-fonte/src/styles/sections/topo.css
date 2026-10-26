@@ -1,0 +1,454 @@
+/* ==========================================================================
+   TOPO · barra (estática → fixa compacta), menu de telas pequenas e card
+   com vídeo + título gigante fino em caixa alta.
+   ========================================================================== */
+.topo {
+  --topo-barra-h: 48px;
+  --topo-pad: clamp(20px, 4.4vw, 72px);
+  --topo-fs: clamp(2.5rem, 0.2rem + 7.3vw, 7.75rem);
+  --topo-recuo: 0.62em;
+
+  position: relative;
+  display: grid;
+  gap: var(--gap);
+}
+
+/* ------------------------------------------------------------ Barra */
+.topo-slot {
+  height: var(--topo-barra-h);
+}
+
+.topo-barra {
+  height: var(--topo-barra-h);
+}
+
+.topo-barra__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: 100%;
+  padding-inline: 2px;
+}
+
+.topo-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topo-logo__nome {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.34em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.topo-logo__sub {
+  position: relative;
+  padding-left: 12px;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.topo-logo__sub::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 14px;
+  background: var(--line-2);
+  transform: translateY(-50%);
+}
+
+.topo-nav__lista {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.topo-nav .btn--pilula {
+  min-height: 30px;
+}
+
+/* Estado fixo (o JS liga quando a barra estática sai da tela) */
+.topo-barra.is-fixa {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--z-nav);
+  height: 56px;
+  padding-inline: max(var(--frame), calc((100% - 1440px) / 2 + var(--frame)));
+  border-bottom: 1px solid var(--line);
+  background: rgba(11, 11, 12, 0.74);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  transform: translateY(-101%);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.topo-barra.is-fixa.is-visivel {
+  transform: none;
+}
+
+.topo-barra.sem-transicao {
+  transition: none;
+}
+
+/* Botão do menu (2 traços) */
+.topo-menu-btn,
+.topo-menu__fechar {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: none;
+  color: var(--text);
+}
+
+.topo-menu-btn__tracos,
+.topo-menu__x {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 8px;
+}
+
+.topo-menu-btn__tracos > span,
+.topo-menu__x > span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--dur) var(--ease-out), width var(--dur) var(--ease-out);
+}
+
+.topo-menu-btn__tracos > span:first-child {
+  top: 0;
+}
+
+.topo-menu-btn__tracos > span:last-child {
+  bottom: 0;
+  left: auto;
+  right: 0;
+  width: 66%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .topo-menu-btn:hover .topo-menu-btn__tracos > span:last-child {
+    width: 100%;
+  }
+}
+
+.topo-menu__x > span {
+  top: 50%;
+}
+
+.topo-menu__x > span:first-child {
+  transform: rotate(45deg);
+}
+
+.topo-menu__x > span:last-child {
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 899px) {
+  .topo-nav {
+    display: none;
+  }
+
+  .topo-menu-btn,
+  .topo-menu__fechar {
+    display: grid;
+  }
+
+  .topo-logo__nome {
+    font-size: 1.125rem;
+  }
+}
+
+/* ------------------------------------------------------------ Menu (painel) */
+.topo-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  padding: 0 calc(var(--frame) + 14px) max(24px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+}
+
+.topo-menu[hidden] {
+  display: none;
+}
+
+.topo-menu__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: calc(var(--topo-barra-h) + var(--frame));
+  padding-top: var(--frame);
+  border-bottom: 1px solid var(--line);
+}
+
+.topo-menu__nav {
+  flex: 1;
+  padding-block: clamp(24px, 6vh, 56px);
+}
+
+.topo-menu__lista {
+  display: grid;
+  margin: 0;
+}
+
+.topo-menu__lista > li {
+  border-bottom: 1px solid var(--line);
+}
+
+.topo-menu__link {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0 12px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.2rem + 4vw, 3rem);
+  font-weight: 200;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.topo-menu__n {
+  min-width: 2ch;
+  color: var(--soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+}
+
+.topo-menu__link:focus-visible {
+  outline-offset: -1px;
+}
+
+.topo-menu__pe {
+  display: grid;
+  gap: 16px;
+}
+
+.topo-menu__cta {
+  width: 100%;
+}
+
+.topo-menu__info {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+html.menu-aberto {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------ Card do vídeo */
+.topo-card {
+  position: relative;
+  display: grid;
+  align-items: end;
+  height: min(78svh, 760px);
+  min-height: 520px;
+  border-radius: var(--r-card);
+  overflow: clip;
+  background: var(--panel);
+  isolation: isolate;
+}
+
+.topo-midia {
+  position: absolute;
+  inset: -64px 0 0;
+  z-index: -2;
+}
+
+.topo-midia__in,
+.topo-poster,
+.topo-poster img,
+.topo-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.topo-poster img,
+.topo-video {
+  object-fit: cover;
+  object-position: 62% 30%;
+}
+
+.topo-video {
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+
+.topo-video.is-tocando {
+  opacity: 1;
+}
+
+/* Véu: escurece a esquerda (título) e a base (subtítulo) */
+.topo-veu {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(11, 11, 12, 0.82) 0%, rgba(11, 11, 12, 0.52) 34%, rgba(11, 11, 12, 0) 62%),
+    linear-gradient(0deg, rgba(11, 11, 12, 0.72) 0%, rgba(11, 11, 12, 0) 46%);
+  pointer-events: none;
+}
+
+.topo-conteudo {
+  padding: var(--topo-pad);
+  padding-bottom: clamp(36px, 7vh, 72px);
+}
+
+.topo-titulo {
+  margin-bottom: clamp(20px, 2.6vw, 36px);
+  font-size: var(--topo-fs);
+  font-weight: 200;
+  letter-spacing: var(--track-hero);
+  line-height: 0.98;
+  text-shadow: 0 1px 30px rgba(0, 0, 0, 0.25);
+}
+
+.topo-titulo__linha {
+  display: block;
+  white-space: nowrap;
+}
+
+.topo-titulo__linha--2 {
+  padding-left: var(--topo-recuo);
+}
+
+/* Subtítulo recuado: começa sob o "&" da segunda linha */
+.topo-apoio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 32px;
+  padding-left: calc(var(--topo-fs) * 0.62);
+  padding-right: 160px;
+}
+
+.topo-sub {
+  max-width: 44ch;
+  color: var(--text-2);
+  font-size: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
+  line-height: 1.55;
+}
+
+.topo-cta {
+  min-height: 40px;
+  padding-inline: 16px;
+  font-size: var(--fs-label);
+}
+
+.topo-mais {
+  position: absolute;
+  right: var(--topo-pad);
+  bottom: clamp(36px, 7vh, 72px);
+  color: var(--text);
+}
+
+.topo-mais .seta-link__circulo {
+  border-color: rgba(235, 231, 225, 0.4);
+}
+
+/* Seta para baixo (rola até os pilares) */
+.topo-mais .seta-link__circulo svg,
+.topo-mais:hover .seta-link__circulo svg {
+  transform: rotate(135deg);
+}
+
+@media (max-width: 767px) {
+  .topo {
+    --topo-pad: 20px;
+    --topo-fs: clamp(2.25rem, 0.3rem + 9.2vw, 3.5rem);
+    --topo-recuo: 0.5em;
+  }
+
+  .topo-card {
+    height: min(82svh, 720px);
+    min-height: 540px;
+  }
+
+  .topo-poster img,
+  .topo-video {
+    object-position: 50% 20%;
+  }
+
+  .topo-veu {
+    background:
+      linear-gradient(0deg, rgba(11, 11, 12, 0.94) 0%, rgba(11, 11, 12, 0.72) 30%, rgba(11, 11, 12, 0) 62%),
+      linear-gradient(90deg, rgba(11, 11, 12, 0.35) 0%, rgba(11, 11, 12, 0) 60%);
+  }
+
+  .topo-conteudo {
+    padding-bottom: 24px;
+  }
+
+  .topo-apoio {
+    gap: 18px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .topo-sub {
+    max-width: 34ch;
+  }
+
+  .topo-mais {
+    top: auto;
+    right: var(--topo-pad);
+    bottom: 32px;
+  }
+}
+
+/* ------------------------------------------------------------ Estados iniciais
+   Só com html.js-motion (o JS anima; sem JS/movimento reduzido fica visível). */
+html.js-motion .topo:not(.is-pronto) .topo-card {
+  clip-path: inset(50% 0% 50% 0% round var(--r-card));
+}
+
+html.js-motion .topo:not(.is-pronto) :is(.topo-titulo__linha, [data-topo-entra], .topo-mais, .topo-logo, .topo-menu-btn, .topo-nav__lista > li) {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topo-video {
+    display: none;
+  }
+}

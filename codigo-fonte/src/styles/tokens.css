@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Tokens · Varela Advocacia
+   Referência: editorial escuro (moda) — fundo quase preto, cards carvão com
+   raio pequeno encostados uns nos outros (8px de respiro), títulos finos em
+   caixa alta e espaçados, rótulos condensados, fotos de cinema e UM acento
+   vermelho-terracota nos botões de ação. Vinho só nas fotos e detalhes.
+   ========================================================================== */
+:root {
+  /* Cores */
+  --bg: #0b0b0c;              /* fundo da página */
+  --panel: #1b1b1c;           /* card padrão */
+  --panel-2: #232325;         /* card em destaque / hover */
+  --panel-3: #2c2c2e;         /* pílulas da nav, campos */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --text: #ebe7e1;            /* títulos e texto forte (branco quente) */
+  --text-2: #c9c4bd;          /* texto corrido */
+  --muted: #9b968f;           /* apoio (≥ 4.5:1 sobre --panel) */
+  --soft: #6f6b66;            /* detalhes, numeração */
+  --accent: #d9583f;          /* ação (botão "Fale conosco"), como na referência */
+  --accent-2: #e8735b;        /* hover do acento */
+  --on-accent: #1c0d0a;       /* texto sobre o acento */
+  --wine: #7a1e26;            /* vinho do blazer: brilhos e filetes */
+  --wine-2: #a3343b;
+
+  /* Tipografia */
+  --font-display: 'Josefin Sans Variable', 'Josefin Sans', 'Futura', system-ui, sans-serif; /* títulos finos */
+  --font-ui: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;                      /* rótulos, nav, botões */
+  --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;                  /* texto corrido */
+
+  --fs-hero: clamp(3rem, 1rem + 7.4vw, 8.5rem);        /* "DIREITO & ESTRATÉGIA" */
+  --fs-h2: clamp(1.75rem, 1.2rem + 2.2vw, 3.25rem);    /* títulos de dobra em caixa alta */
+  --fs-h3: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);    /* títulos de card em caixa alta */
+  --fs-lead: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-body: 0.9375rem;      /* 15px, como a referência (texto pequeno e elegante) */
+  --fs-sm: 0.8125rem;
+  --fs-label: 0.75rem;       /* rótulos condensados em caixa alta */
+  --fs-stat: clamp(2rem, 1.4rem + 2vw, 3.25rem);
+  --track-hero: 0.06em;
+  --track-title: 0.01em;
+  --track-label: 0.12em;
+
+  /* Espaço */
+  --gap: 8px;                 /* respiro entre cards (referência) */
+  --frame: clamp(8px, 1.6vw, 24px); /* margem da moldura da página */
+  --pad-card: clamp(20px, 2.2vw, 32px);
+  --pad-sec: clamp(56px, 7vw, 120px);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Raios: pequenos, como na referência */
+  --r-card: 6px;
+  --r-img: 6px;
+  --r-pill: 4px;              /* pílulas da nav são retângulos levemente arredondados */
+  --r-round: 999px;
+
+  /* Movimento: lento, sóbrio */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.5s;
+  --dur-slow: 1s;
+
+  --z-nav: 50;
+  --z-flutua: 60;
+  --z-menu: 70;
+}

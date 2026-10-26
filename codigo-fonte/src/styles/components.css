@@ -1,0 +1,216 @@
+/* ==========================================================================
+   Componentes compartilhados · use estes antes de criar um novo
+   .rotulo · .btn (--acento | --pilula | --contorno) · .seta-link · .num
+   ========================================================================== */
+
+/* Rótulo pequeno em caixa alta ("ABOUT", "DESIGNERS" nos números) */
+.rotulo {
+  display: inline-block;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ Botões
+   <a class="btn btn--acento" data-wa="topo" href="#contato">
+     <span class="btn__rotulo">Fale conosco</span>
+   </a>
+   Retângulo de raio pequeno, rótulo condensado em caixa alta.
+   No hover o rótulo desliza para cima (texto duplicado pelo main.js).    */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.btn__rotulo {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding-block: 4px;
+}
+
+.btn__rotulo > span {
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.btn__rotulo > span + span {
+  position: absolute;
+  inset: 4px 0 auto;
+  transform: translateY(140%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover .btn__rotulo > span:first-child {
+    transform: translateY(-140%);
+  }
+
+  .btn:hover .btn__rotulo > span + span {
+    transform: translateY(0);
+  }
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Ação principal (terracota da referência) */
+.btn--acento {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--acento:hover {
+    background: var(--accent-2);
+  }
+}
+
+/* Pílula escura da nav ("DESIGNERS", "COLLABS") */
+.btn--pilula {
+  min-height: 32px;
+  padding: 0 12px;
+  background: var(--panel-3);
+  color: var(--text-2);
+  font-size: var(--fs-label);
+  font-weight: 500;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--pilula:hover {
+    background: #39393c;
+    color: var(--text);
+  }
+}
+
+.btn--pilula.btn--acento {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Contorno claro (secundário) */
+.btn--contorno {
+  border-color: var(--line-2);
+  color: var(--text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--contorno:hover {
+    border-color: var(--text);
+  }
+}
+
+.btn--grande {
+  min-height: 52px;
+  padding: 0 26px;
+  font-size: 0.9375rem;
+}
+
+/* ------------------------------------------------------------ "Saiba mais"
+   <a class="seta-link" href="#areas">
+     <span class="seta-link__circulo" aria-hidden="true"><svg>…↗…</svg></span>
+     <span class="seta-link__texto">Saiba mais</span>
+   </a>
+   Círculo com seta ↗ + rótulo condensado (como "LEARN MORE"/"EXPLORE").
+   No hover o círculo enche e a seta gira para →.                          */
+.seta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.seta-link__circulo {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-round);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.seta-link__circulo svg {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .seta-link:hover {
+    color: var(--text);
+  }
+
+  .seta-link:hover .seta-link__circulo,
+  a:hover > * > .seta-link .seta-link__circulo {
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .seta-link:hover .seta-link__circulo svg {
+    transform: rotate(45deg);
+  }
+}
+
+.seta-link[aria-expanded='true'] .seta-link__circulo svg {
+  transform: rotate(135deg);
+}
+
+/* Número grande (estatísticas "150+") */
+.num {
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--fs-stat);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Filete vinho (detalhe) */
+.filete {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
