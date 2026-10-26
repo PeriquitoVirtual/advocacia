@@ -452,3 +452,14 @@ html.js-motion .topo:not(.is-pronto) :is(.topo-titulo__linha, [data-topo-entra],
     display: none;
   }
 }
+
+/* Copy da marca: duas linhas no mesmo bloco de título. */
+.topo-titulo { font-size: clamp(2rem, 5.3vw, 5.6rem); }
+.topo-logo__nome { letter-spacing: .08em; }
+@media(max-width: 480px) { .topo-titulo { font-size: clamp(1.4rem, 6.3vw, 2rem); } .topo-logo__nome { font-size: 1rem; } }
+@media(max-width: 767px) {
+  .topo-logo { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .topo-logo__sub { padding-left: 0; }
+  .topo-logo__sub::before { display: none; }
+  .topo > * { min-width: 0; }
+}
