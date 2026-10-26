@@ -214,3 +214,9 @@
   height: 1px;
   background: var(--accent);
 }
+
+/* CTAs com assunto e destino explícitos, inclusive em telas pequenas. */
+[data-wa] .btn__rotulo { white-space: normal; text-align: center; }
+[data-wa].seta-link { max-width: 100%; }
+[data-wa] .seta-link__texto { overflow-wrap: anywhere; }
+@media(max-width: 767px) { [data-wa].btn { min-height: 44px; } .topo-apoio .topo-cta { width: 100%; } }

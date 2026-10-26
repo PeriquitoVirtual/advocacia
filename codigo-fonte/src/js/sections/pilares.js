@@ -28,6 +28,7 @@ export default function init(ctx) {
   cards.forEach((card) => {
     const btn = card.querySelector('[data-pil-mais]');
     const extra = card.querySelector('[data-pil-extra]');
+    if (!btn || !extra) return;
     btn.addEventListener('click', () => {
       const abrir = !card.classList.contains('is-aberto');
       cards.forEach((c) => c !== card && c.classList.contains('is-aberto') && setAberto(c, false));

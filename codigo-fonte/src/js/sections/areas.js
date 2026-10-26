@@ -74,6 +74,7 @@ export default function init(ctx) {
     const cards = [...linha.querySelectorAll('.areas-card')];
     cards.forEach((card) => {
       card.addEventListener('click', (e) => {
+        if (e.target.closest('[data-wa]')) return;
         // Cliques dentro da lista aberta não fecham o card (ex.: selecionar texto).
         if (e.target.closest('.areas-card__painel')) return;
         if (!e.target.closest('button') && String(window.getSelection?.() || '').length) return;

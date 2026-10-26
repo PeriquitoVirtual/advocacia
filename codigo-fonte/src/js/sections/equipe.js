@@ -18,7 +18,7 @@ export default function init(ctx) {
 
   cards.forEach((card) => {
     const botao = card.querySelector('.eq-mais');
-    if (!botao) return;
+    if (!botao || botao.matches('[data-wa]')) return;
     botao.addEventListener('click', () => {
       const abrir = !card.classList.contains('is-aberto');
       cards.forEach((c) => c !== card && fechar(c));
