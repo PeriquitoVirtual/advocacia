@@ -5,7 +5,7 @@
 import { rolarPara } from '../motion.js';
 
 const MQ_RETRATO = '(max-width: 767px)';
-const MQ_MENU = '(max-width: 899px)';
+const MQ_MENU = '(max-width: 1023px)';
 
 export default function init(ctx) {
   const { gsap, ScrollTrigger, reduce } = ctx;

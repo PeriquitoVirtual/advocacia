@@ -13,6 +13,7 @@ import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/components.css';
 import '../styles/hero-neon.css';
+import '../styles/nav-emerald.css';
 import '../styles/sections/topo.css';
 import '../styles/sections/pilares.css';
 import '../styles/sections/sobre.css';
