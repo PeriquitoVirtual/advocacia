@@ -29,10 +29,11 @@ export default function init(ctx) {
 /* ------------------------------------------------------------ Vídeo */
 function iniciarVideo(video, card, reduce) {
   if (!video || reduce) return;
+  if (navigator.connection?.saveData || ['slow-2g', '2g'].includes(navigator.connection?.effectiveType)) return;
   const mq = window.matchMedia(MQ_RETRATO);
   let visivel = true;
 
-  video.preload = 'auto';
+  video.preload = 'metadata';
   video.addEventListener('playing', () => video.classList.add('is-tocando'));
 
   const tocar = () => {
@@ -242,7 +243,7 @@ function iniciarMenu(secao, ctx) {
 /* ------------------------------------------------------------ Links internos */
 function iniciarLinks(secao, ctx) {
   const links = secao.querySelectorAll(
-    '.topo-nav a[href^="#"]:not([data-wa]), .topo-logo[href^="#"], [data-topo-mais]',
+    '.topo-nav a[href^="#"]:not([data-wa]), .topo-logo[href^="#"], [data-topo-mais][href^="#"]:not([data-wa])',
   );
   links.forEach((a) => {
     a.addEventListener('click', (e) => {

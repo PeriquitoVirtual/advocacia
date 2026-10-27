@@ -1,0 +1,51 @@
+/* Ajustes de leitura e hierarquia, preservando a identidade visual. */
+:root { --fs-body: 1rem; --fs-sm: .9375rem; --pad-sec: clamp(44px, 5vw, 80px); }
+.topo-titulo { font-weight: 300; line-height: 1.08; }
+.topo-registro { margin-bottom: 16px; color: var(--text); font-size: .8125rem; line-height: 1.5; letter-spacing: .04em; }
+.topo-sub { font-size: 1rem; max-width: 48ch; }
+.topo-orientacao { flex-basis: 100%; max-width: 46ch; color: var(--text-2); font-size: .875rem; line-height: 1.5; }
+.hero-neon .hero-neon-btn-text { font-size: .9375rem; letter-spacing: .08em; }
+.hero-neon-btn-wrapper-v3 { --animation-speed: 3s; }
+.btn:not(.btn--pilula) { font-size: .9375rem; }
+.seta-link { font-size: .875rem; min-height: 44px; }
+.pil-card { gap: 14px; }
+.pil-card__texto { font-size: 1rem; line-height: 1.6; }
+.pil-numeros { padding-block: 28px; }
+.pil-resumo-valor { margin-top: 8px; font-family: var(--font-body); font-size: 1rem; line-height: 1.4; color: var(--text); }
+.sobre-coluna { font-size: 1rem; max-width: none; }
+.sobre-card { gap: 36px; }
+.areas-card__desc, .eq-perfil, .met-etapa p, .faq-resposta p { font-size: 1rem; line-height: 1.65; }
+.areas-card { cursor: default; gap: 24px; }
+.eq-socio { min-height: 0; }
+.eq-info { min-height: 0; display: flex; flex-direction: column; gap: 12px; padding: 28px; }
+.eq-info .eq-mais { margin-top: auto; }
+.eq-grade { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); overflow: visible; }
+.eq-topo { margin-bottom: 28px; }
+.eq-area { font-size: 1rem; }
+.eq-info h3 { font-size: 1.25rem; }
+.contato-rodape__legal a { text-decoration: underline; text-underline-offset: 3px; }
+.preferencias-dados { background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.consentimento { position: fixed; z-index: 100; bottom: 16px; left: 16px; width: min(520px,calc(100% - 32px)); padding: 18px; background: #1b1b1c; border: 1px solid #666; border-radius: 6px; box-shadow: 0 8px 32px #0009; color: #ebe7e1; }
+.consentimento[hidden] { display: none; }
+.consentimento p { font-size: .875rem; line-height: 1.5; }
+.consentimento a { text-decoration: underline; }
+.consentimento__acoes { display: flex; gap: 10px; margin-top: 12px; }
+.consentimento button { flex: 1; border: 1px solid #a6b5ad; border-radius: 4px; background: #163b2c; padding: 10px; min-height: 44px; font-size: .875rem; line-height: 1.2; }
+.consentimento button:focus-visible, .preferencias-dados:focus-visible { outline: 2px solid #66dfb8; outline-offset: 3px; }
+@media(max-width: 767px) {
+ .topo-card { height: auto; min-height: 640px; display: flex; align-items: flex-end; }
+ .topo-conteudo { width: 100%; padding-top: 260px; }
+ .topo-titulo { font-size: clamp(1.25rem, 6vw, 2.5rem); letter-spacing: .025em; }
+ .topo-titulo__linha--2 { padding-left: 0; }
+ .topo-registro { max-width: 30ch; font-size: .8125rem; margin-bottom: 12px; }
+ .topo-apoio { gap: 16px; }
+ .topo-orientacao { font-size: .875rem; }
+ .eq-grade { grid-template-columns: 1fr; }
+ .eq-item { min-width: 0; }
+ .eq-info { padding: 24px; }
+ .sobre-card__topo { flex-wrap: wrap; }
+ .met-chamada .btn, .areas-fecho .btn { width: 100%; }
+}
+@media(min-width: 768px) and (max-width: 1023px) {
+ .eq-grade { grid-template-columns: 1fr; }
+}

@@ -22,8 +22,10 @@ import '../styles/sections/metodo.css';
 import '../styles/sections/equipe.css';
 import '../styles/sections/duvidas.css';
 import '../styles/sections/contato.css';
+import '../styles/conversao.css';
 
 import { linkWhatsApp } from './config.js';
+import initMedicao from './medicao.js';
 import {
   contadores,
   desktop,
@@ -47,12 +49,20 @@ import duvidas from './sections/duvidas.js';
 import contato from './sections/contato.js';
 
 const DOBRAS = { topo, pilares, sobre, areas, metodo, equipe, duvidas, contato };
+initMedicao();
 
 // Links de WhatsApp: <a data-wa="contexto">
 document.querySelectorAll('[data-wa]').forEach((a) => {
   a.href = linkWhatsApp(a.dataset.wa);
   a.target = '_blank';
-  a.rel = 'noopener';
+  a.rel = 'noopener noreferrer';
+  // Sinal local, sem cookies, armazenamento ou envio a serviços externos.
+  // A integração com Google Ads/Analytics depende dos IDs reais e do consentimento.
+  a.addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('whatsapp_click', {
+      detail: { contexto: a.dataset.wa, secao: a.closest('section')?.id || 'global' },
+    }));
+  });
 });
 
 // Rótulo dos botões duplicado para o deslize no hover (o 2º é decorativo).

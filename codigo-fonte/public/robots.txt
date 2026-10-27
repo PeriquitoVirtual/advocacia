@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://izabellaalmeidaadvocacia.com.br/sitemap.xml

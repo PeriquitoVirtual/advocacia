@@ -56,8 +56,9 @@ export default function init(ctx) {
 
   // ---------------------------------------------------------- Entrada dos retratos
   if (reduce || !grade) return;
-  const fotos = cards.map((c) => c.querySelector('.eq-foto'));
-  const imgs = cards.map((c) => c.querySelector('.eq-zoom img'));
+  const fotos = cards.map((c) => c.querySelector('.eq-foto')).filter(Boolean);
+  const imgs = cards.map((c) => c.querySelector('.eq-zoom img')).filter(Boolean);
+  if (!fotos.length || !imgs.length) return;
 
   const tl = gsap.timeline({
     paused: true,
