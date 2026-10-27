@@ -78,6 +78,14 @@
   object-fit: cover;
 }
 
+/* Preserva o topo do retrato, sem ampliar ou deslocar a cabeça. */
+.areas-foto--retrato .areas-foto__mov { inset: 0; will-change: auto; }
+.areas-linha .areas-foto--retrato .areas-foto__zoom,
+.areas-linha:hover .areas-foto--retrato .areas-foto__zoom,
+.areas-linha:focus-within .areas-foto--retrato .areas-foto__zoom { transform: none; }
+html.js-motion .areas-foto--retrato img,
+.areas-foto--retrato img { transform: none; object-position: 50% 0%; }
+
 .areas-foto::after {
   content: '';
   position: absolute;

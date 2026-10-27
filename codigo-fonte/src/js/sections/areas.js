@@ -103,6 +103,7 @@ export default function init(ctx) {
     const foto = linha.querySelector('.areas-foto');
     const mov = linha.querySelector('.areas-foto__mov');
     const img = linha.querySelector('.areas-foto img');
+    const retratoFixo = foto?.classList.contains('areas-foto--retrato');
     const cards = linha.querySelectorAll('.areas-card');
     const inv = linha.classList.contains('areas-linha--inv');
     const fechada = inv ? `inset(0% 0% 0% 100% ${R})` : `inset(0% 100% 0% 0% ${R})`;
@@ -114,7 +115,7 @@ export default function init(ctx) {
         { clipPath: fechada },
         { clipPath: `inset(0% 0% 0% 0% ${R})`, duration: 1.4, ease: 'power3.inOut' },
         0,
-      ).fromTo(img, { scale: 1.12 }, { scale: 1, duration: 1.6, ease: 'expo.out' }, 0.15);
+      ).fromTo(img, { scale: retratoFixo ? 1 : 1.12 }, { scale: 1, duration: 1.6, ease: 'expo.out' }, 0.15);
     }
     if (cards.length) {
       tl.fromTo(
@@ -125,7 +126,7 @@ export default function init(ctx) {
       );
     }
 
-    if (foto && mov) {
+    if (foto && mov && !retratoFixo) {
       gsap.fromTo(
         mov,
         { y: -36 },
