@@ -1,6 +1,6 @@
 /* Ajustes de leitura e hierarquia, preservando a identidade visual. */
 :root { --fs-body: 1rem; --fs-sm: .9375rem; --pad-sec: clamp(44px, 5vw, 80px); }
-.topo { min-width: 0; grid-template-columns: minmax(0, 1fr); row-gap: clamp(24px, 3vw, 40px); }
+.topo { min-width: 0; grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
 .topo-card { width: 100%; min-width: 0; max-width: 100%; container-type: inline-size; }
 .topo-conteudo { min-width: 0; }
 .topo-titulo { font-size: clamp(2rem, 5.2cqi, 5.4rem); font-weight: 300; line-height: 1.08; }
@@ -36,6 +36,7 @@
 .consentimento button { flex: 1; border: 1px solid #a6b5ad; border-radius: 4px; background: #163b2c; padding: 10px; min-height: 44px; font-size: .875rem; line-height: 1.2; }
 .consentimento button:focus-visible, .preferencias-dados:focus-visible { outline: 2px solid #66dfb8; outline-offset: 3px; }
 @media(max-width: 767px) {
+ .topo { row-gap: 24px; }
  .topo-card { height: auto; min-height: 640px; display: flex; align-items: flex-end; }
  .topo-conteudo { width: 100%; padding-top: 260px; }
  .topo-titulo { font-size: clamp(1.25rem, 6vw, 2.5rem); letter-spacing: .025em; }
