@@ -23,6 +23,7 @@ import '../styles/sections/equipe.css';
 import '../styles/sections/duvidas.css';
 import '../styles/sections/contato.css';
 import '../styles/conversao.css';
+import '../styles/topo-editorial.css';
 
 import { linkWhatsApp } from './config.js';
 import initMedicao from './medicao.js';

@@ -1,0 +1,28 @@
+/* Hierarquia editorial: área de atuação primeiro, estratégia em segundo plano. */
+.topo-conteudo { width: 100%; max-width: 1040px; }
+.topo-registro { display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: center; margin-bottom: 22px; color: #e9bd78; font-family: var(--font-ui); font-size: .9375rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; }
+.topo-registro::before { content: ''; width: 28px; height: 1px; background: #e9bd78; margin-right: 3px; }
+.topo-registro span { color: #f4efe7; }
+.topo-titulo { margin-bottom: 24px; font-size: clamp(2.6rem, 5.05cqi, 4.8rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 400; text-transform: none; }
+.topo-titulo strong { color: #e9bd78; font-weight: 650; }
+.topo-titulo__linha--2 { padding-left: 0; margin-top: 2px; color: #f5f0e9; font-weight: 300; }
+.topo-apoio { flex-direction: column; align-items: flex-start; gap: 18px; padding-left: 0; padding-right: 0; }
+.topo-proposta { color: #f5f0e9; font-size: clamp(1.125rem, 1.6cqi, 1.375rem); font-weight: 500; line-height: 1.4; }
+.topo-sub { max-width: 50ch; color: #d5d0c8; line-height: 1.65; }
+.topo-orientacao { flex-basis: auto; color: #c2bdb5; font-size: .8125rem; letter-spacing: .025em; }
+.topo-veu { background: linear-gradient(90deg,rgba(8,11,12,.9) 0%,rgba(8,11,12,.68) 36%,rgba(8,11,12,.08) 76%),linear-gradient(0deg,rgba(8,11,12,.8) 0%,rgba(8,11,12,0) 65%); }
+@media(min-width: 768px) and (max-width: 1099px) {
+ .topo-titulo { font-size: 5.1cqi; }
+ .topo-conteudo { max-width: 88%; }
+}
+@media(max-width: 767px) {
+ .topo-conteudo { max-width: 100%; padding-top: 240px; padding-bottom: 28px; }
+ .topo-registro { max-width: 100%; display: block; font-size: .75rem; line-height: 1.6; letter-spacing: .1em; margin-bottom: 14px; }
+ .topo-registro::before { display: none; }
+ .topo-registro span { display: block; }
+ .topo-titulo { font-size: clamp(1.65rem, 8.3cqi, 2.7rem); line-height: 1.12; letter-spacing: -.04em; margin-bottom: 20px; }
+ .topo-apoio { gap: 16px; }
+ .topo-proposta { max-width: 27ch; font-size: 1.125rem; }
+ .topo-sub { font-size: 1rem; }
+ .topo-veu { background: linear-gradient(0deg,rgba(8,11,12,.97) 0%,rgba(8,11,12,.86) 42%,rgba(8,11,12,.12) 82%),linear-gradient(90deg,rgba(8,11,12,.2),transparent); }
+}
