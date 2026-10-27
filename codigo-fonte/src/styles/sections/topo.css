@@ -462,4 +462,5 @@ html.js-motion .topo:not(.is-pronto) :is(.topo-titulo__linha, [data-topo-entra],
   .topo-logo__sub { padding-left: 0; }
   .topo-logo__sub::before { display: none; }
   .topo > * { min-width: 0; }
+  .topo-mais { display: none; }
 }
