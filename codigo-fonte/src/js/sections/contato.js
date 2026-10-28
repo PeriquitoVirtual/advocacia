@@ -1,8 +1,7 @@
 // =============================================================================
 // contato.js · foto (máscara abrindo + parallax interno leve), selo
 // "Aberto/Fechado agora" pelo fuso de São Paulo, wordmark do rodapé e o
-// botão flutuante de WhatsApp (aparece depois do topo, some no contato e
-// com o menu aberto).
+// botão flutuante de WhatsApp, disponível desde a abertura da página.
 // =============================================================================
 const ABRE = 9 * 60; // 9h
 const FECHA = 18 * 60; // 18h
@@ -39,28 +38,15 @@ function selo(secao) {
 function flutuante(secao) {
   const botao = document.querySelector('.contato-flutua');
   if (!botao) return;
-  const html = document.documentElement;
-  const topo = document.getElementById('topo');
-  let pendente = false;
-
-  const avaliar = () => {
-    pendente = false;
-    const vh = window.innerHeight;
-    const passouTopo = topo ? topo.getBoundingClientRect().bottom <= 0 : window.scrollY > vh;
-    const noContato = secao.getBoundingClientRect().top < vh;
-    const menu = html.classList.contains('menu-aberto');
-    botao.classList.toggle('is-visivel', passouTopo && !noContato && !menu);
-  };
-  const agendar = () => {
-    if (pendente) return;
-    pendente = true;
-    requestAnimationFrame(avaliar);
-  };
-
-  window.addEventListener('scroll', agendar, { passive: true });
-  window.addEventListener('resize', agendar);
-  new MutationObserver(agendar).observe(html, { attributes: true, attributeFilter: ['class'] });
-  avaliar();
+  // No celular, posiciona o ícone acima do aviso enquanto ele estiver aberto.
+  const aviso = document.querySelector('.consentimento');
+  if (aviso && 'ResizeObserver' in window) {
+    new ResizeObserver(() => {
+      const altura = aviso.hidden ? 0 : aviso.getBoundingClientRect().height + 28;
+      botao.style.setProperty('--aviso-offset', `${altura}px`);
+      botao.classList.toggle('com-aviso', !aviso.hidden);
+    }).observe(aviso);
+  }
 }
 
 export default function init(ctx) {

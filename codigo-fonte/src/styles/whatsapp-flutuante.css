@@ -1,0 +1,35 @@
+/* Emerald Matrix do cabeçalho, adaptado ao atalho de contato. */
+.contato-flutua {
+  width: 58px;
+  height: 58px;
+  border: 0;
+  border-radius: 50%;
+  background: #030d08;
+  color: #d1fae5;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  isolation: isolate;
+  animation: navEmeraldbreathe 4s ease-in-out infinite;
+  transition: box-shadow .3s ease, color .3s ease, bottom .25s ease;
+}
+.contato-flutua__borda { position: absolute; inset: 0; z-index: -1; border-radius: inherit; overflow: hidden; pointer-events: none; }
+.contato-flutua__borda::before { content: ''; position: absolute; inset: -50%; background: conic-gradient(from 0deg,#10b981 0deg,transparent 80deg,transparent 280deg,#34d399 360deg); animation: navEmeraldborderTurn 3s linear infinite; }
+.contato-flutua__borda::after { content: ''; position: absolute; inset: 2px; border-radius: inherit; background: linear-gradient(160deg,#0d3928,#030d08 55%,#000); box-shadow: inset 0 0 18px #000b; }
+.contato-flutua > svg { width: 26px; height: 26px; filter: drop-shadow(0 0 6px #10b98155); }
+.contato-flutua__rotulo { right: calc(100% + 12px); border: 1px solid #10b98166; border-radius: 50px; padding-inline: 16px; height: 40px; background: linear-gradient(180deg,#0e3021,#030d08); color: #d1fae5; font-size: .8125rem; font-weight: 600; box-shadow: 0 0 24px #10b98133; pointer-events: none; transform: translate(6px,-50%); transition: opacity .2s ease, transform .25s ease; }
+.contato-flutua:focus-visible { outline: 2px solid #34d399; outline-offset: 5px; color: #fff; }
+.contato-flutua:focus-visible .contato-flutua__rotulo { opacity: 1; transform: translate(0,-50%); }
+@media(hover: hover) and (pointer: fine) {
+ .contato-flutua:hover { background: #030d08; color: #fff; box-shadow: 0 0 32px #10b98188,0 10px 36px #0008; animation: none; }
+ .contato-flutua:hover .contato-flutua__rotulo { opacity: 1; transform: translate(0,-50%); }
+}
+html.menu-aberto .contato-flutua { opacity: 0; visibility: hidden; pointer-events: none; }
+@media(max-width: 600px) {
+ .contato-flutua { width: 54px; height: 54px; bottom: max(16px,calc(env(safe-area-inset-bottom) + 12px),var(--aviso-offset,0px)); }
+ .contato-flutua.com-aviso { top: max(92px,calc(env(safe-area-inset-top) + 92px)); bottom: auto; }
+}
+@media(prefers-reduced-motion: reduce) {
+ .contato-flutua, .contato-flutua__borda::before { animation: none; }
+ .contato-flutua, .contato-flutua__rotulo { transition: none; }
+}
