@@ -83,3 +83,7 @@
 .pil-contato-link:hover { color: var(--gold); }
 .pil-contato-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; border-radius: 2px; }
 @media(max-width: 767px) { .pil-contato-link { font-size: .875rem; gap: 6px; } .pil-contato-link svg { width: 14px; height: 14px; } }
+.contato-creditos { margin-top: 12px; }
+.contato-creditos a { color: var(--text-2); text-decoration: none; font-weight: 500; }
+.contato-creditos a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.contato-creditos a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
