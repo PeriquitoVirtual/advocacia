@@ -78,3 +78,8 @@
 @media(max-width: 767px) {
   .topo-veu { background: linear-gradient(0deg,rgba(5,23,40,.99) 0%,rgba(5,23,40,.88) 42%,rgba(5,23,40,.08) 82%),linear-gradient(90deg,rgba(5,23,40,.2),transparent); }
 }
+.pil-contato-link { display: inline-flex; align-items: center; gap: 8px; color: inherit; line-height: inherit; white-space: nowrap; }
+.pil-contato-link svg { width: 16px; height: 16px; flex-shrink: 0; color: #54c9a3; }
+.pil-contato-link:hover { color: var(--gold); }
+.pil-contato-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; border-radius: 2px; }
+@media(max-width: 767px) { .pil-contato-link { font-size: .875rem; gap: 6px; } .pil-contato-link svg { width: 14px; height: 14px; } }
