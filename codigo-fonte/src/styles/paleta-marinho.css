@@ -1,0 +1,66 @@
+/* Identidade da Izabella: azul-marinho, dourado e respiros em off-white. */
+:root {
+  --bg: #071b2d;
+  --panel: #102d46;
+  --panel-2: #153951;
+  --panel-3: #193d57;
+  --line: rgba(211,227,240,.12);
+  --line-2: rgba(211,227,240,.27);
+  --text: #f5f0e7;
+  --text-2: #d0dce6;
+  --muted: #b4c5d4;
+  --soft: #98aec3;
+  --accent: #087b58;
+  --accent-2: #076548;
+  --on-accent: #ffffff;
+  --gold: #e9bd78;
+}
+.topo-barra.is-fixa { background: rgba(7,27,45,.94); }
+.topo-veu { background: linear-gradient(90deg,rgba(5,23,40,.94) 0%,rgba(5,23,40,.72) 36%,rgba(5,23,40,.08) 76%),linear-gradient(0deg,rgba(5,23,40,.9),rgba(5,23,40,0) 65%); }
+.topo-titulo strong, .topo-registro { color: var(--gold); }
+.topo-registro::before { background: var(--gold); }
+.topo-sub { color: #d0dce6; }
+.topo-orientacao { color: #bdcbd8; }
+.secao .cabeca > .rotulo, .contato-cabeca__titulo > .rotulo, .met-num { color: var(--gold); }
+.areas-card__num { color: var(--gold); }
+.pil-card::before, .met-fio__luz { background: var(--gold); }
+.met-etapa.is-ativa .met-no, html:not(.js-motion) .met-no { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 0 5px rgba(233,189,120,.14); }
+.met-etapa.is-ativa .met-num, html:not(.js-motion) .met-num { color: var(--gold); }
+.sobre {
+  --text: #132f46;
+  --text-2: #314b60;
+  --muted: #465c6b;
+  --soft: #795e30;
+  --panel: #f3efe7;
+  --panel-2: #e9e5dc;
+  --line: rgba(19,47,70,.13);
+  --line-2: rgba(19,47,70,.3);
+  color: var(--text-2);
+  color-scheme: light;
+}
+.sobre-card__topo > .rotulo { color: #795e30; }
+.sobre-foto::after { background: linear-gradient(180deg,rgba(7,27,45,0) 65%,rgba(7,27,45,.2)); }
+.faq {
+  --text: #132f46;
+  --text-2: #314b60;
+  --muted: #465c6b;
+  --soft: #795e30;
+  --panel: #fffdf8;
+  --panel-2: #e9e5dc;
+  --line: rgba(19,47,70,.13);
+  --line-2: rgba(19,47,70,.3);
+  border-radius: var(--r-card);
+  background: #f3efe7;
+  padding-bottom: var(--pad-card);
+  color: var(--text-2);
+  color-scheme: light;
+}
+.faq-cabeca > .rotulo { color: #795e30; }
+.sobre-btn.btn--contorno, .faq-btn.btn--contorno { color: #fff; background: var(--accent); border-color: var(--accent); }
+.sobre-btn.btn--contorno:hover, .faq-btn.btn--contorno:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.contato-legenda { background: linear-gradient(to top,rgba(7,27,45,.85),rgba(7,27,45,0)); }
+.contato-marca { color: #163b58; }
+.consentimento { background: #102d46; border-color: #557087; }
+@media(max-width: 767px) {
+  .topo-veu { background: linear-gradient(0deg,rgba(5,23,40,.99) 0%,rgba(5,23,40,.88) 42%,rgba(5,23,40,.08) 82%),linear-gradient(90deg,rgba(5,23,40,.2),transparent); }
+}
