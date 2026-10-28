@@ -16,7 +16,7 @@
   --gold: #e9bd78;
 }
 .topo-barra.is-fixa { background: rgba(7,27,45,.94); }
-.topo-veu { background: linear-gradient(90deg,rgba(5,23,40,.94) 0%,rgba(5,23,40,.72) 36%,rgba(5,23,40,.08) 76%),linear-gradient(0deg,rgba(5,23,40,.9),rgba(5,23,40,0) 65%); }
+.topo-veu { background: linear-gradient(90deg,rgba(5,23,40,.94) 0%,rgba(5,23,40,.82) 32%,rgba(5,23,40,.55) 44%,rgba(5,23,40,.12) 58%,rgba(5,23,40,0) 70%); }
 .topo-titulo strong, .topo-registro { color: var(--gold); }
 .topo-registro::before { background: var(--gold); }
 .topo-sub { color: #d0dce6; }
