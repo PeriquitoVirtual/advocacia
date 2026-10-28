@@ -87,3 +87,6 @@
 .contato-creditos a { color: var(--text-2); text-decoration: none; font-weight: 500; }
 .contato-creditos a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
 .contato-creditos a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+@media(min-width: 1024px) {
+  .topo-conteudo { position: relative; top: -50px; }
+}
