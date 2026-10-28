@@ -108,3 +108,6 @@ async function iniciar() {
 }
 
 iniciar();
+
+import './privacidade-modal.js';
+import '../styles/privacidade-modal.css';

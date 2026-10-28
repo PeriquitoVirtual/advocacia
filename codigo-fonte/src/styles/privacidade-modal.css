@@ -1,0 +1,11 @@
+.privacidade-modal { width: min(760px,calc(100% - 32px)); max-height: 85svh; padding: 0; border: 1px solid var(--line-2); border-radius: 12px; background: var(--bg); color: var(--text); box-shadow: 0 24px 100px #0008; overflow: auto; overscroll-behavior: contain; }
+.privacidade-modal::backdrop { background: rgba(3,13,23,.8); backdrop-filter: blur(5px); }
+.privacidade-modal__barra { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 28px; background: var(--bg); border-bottom: 1px solid var(--line-2); }
+.privacidade-modal__barra h2 { font-family: var(--font-ui); font-size: 24px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.privacidade-modal__barra button { flex: 0 0 40px; width: 40px; height: 40px; border: 1px solid var(--line-2); border-radius: 50%; background: var(--panel); color: var(--text); cursor: pointer; }
+.privacidade-modal__conteudo { padding: 12px 28px 28px; color: var(--text-2); font-size: 16px; line-height: 1.65; }
+.privacidade-modal__conteudo h2 { margin: 24px 0 10px; color: var(--gold); font-family: var(--font-ui); font-size: 23px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.privacidade-modal__conteudo p { margin: 14px 0; }
+.privacidade-modal__conteudo a { color: var(--gold); text-decoration: underline; }
+.privacidade-modal :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media(max-width: 767px) { .privacidade-modal__barra { padding: 16px; } .privacidade-modal__conteudo { padding: 8px 20px 20px; } }
