@@ -90,3 +90,6 @@
 @media(min-width: 1024px) {
   .topo-conteudo { position: relative; top: -50px; }
 }
+.topo-logo { align-items: center; flex-shrink: 0; }
+.topo-logo__imagem { display: block; width: 280px; height: auto; }
+@media(max-width: 767px) { .topo-logo__imagem { width: min(230px,60vw); } }
