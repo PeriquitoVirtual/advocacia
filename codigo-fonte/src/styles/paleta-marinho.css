@@ -93,3 +93,6 @@
 .topo-logo { align-items: center; flex-shrink: 0; }
 .topo-logo__imagem { display: block; width: 280px; height: auto; }
 @media(max-width: 767px) { .topo-logo__imagem { width: min(230px,60vw); } }
+.contato-rodape__logo { display: inline-block; width: min(280px,100%); justify-self: start; }
+.contato-rodape__logo img { display: block; width: 100%; height: auto; }
+@media(max-width: 767px) { .contato-rodape__logo { width: 230px; max-width: 100%; } }
