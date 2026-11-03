@@ -65,9 +65,9 @@ export default function init(ctx) {
     gsap
       .timeline({ scrollTrigger: { trigger: foto, start: 'top 82%', once: true } })
       .to(foto, { clipPath: 'inset(0% 0% 0% 0% round 6px)', duration: 1.4, ease: 'expo.out' }, 0)
-      .to(img, { scale: 1.06, duration: 1.8, ease: 'expo.out' }, 0);
+      .to(img, { scale: foto.classList.contains('contato-foto--izabella') ? 1 : 1.06, duration: 1.8, ease: 'expo.out' }, 0);
 
-    gsap.fromTo(
+    if (!foto.classList.contains('contato-foto--izabella')) gsap.fromTo(
       img,
       { yPercent: -3 },
       {
