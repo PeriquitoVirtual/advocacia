@@ -1,3 +1,7 @@
+import videoMobile from '../../assets/video/advogada_topo.mp4';
+import videoDesktop from '../../assets/video/advogada2.mp4';
+import posterMobile from '../../assets/video/advogada-topo-poster.webp';
+import posterDesktop from '../../assets/video/advogada2-poster.webp';
 // =============================================================================
 // topo.js · entrada do card com vídeo, parallax, vídeo que pausa fora da tela,
 // barra que vira fixa (some ao descer, volta ao subir) e menu de telas pequenas.
@@ -28,9 +32,17 @@ export default function init(ctx) {
 
 /* ------------------------------------------------------------ Vídeo */
 function iniciarVideo(video, card, reduce) {
-  if (!video || reduce) return;
-  if (navigator.connection?.saveData || ['slow-2g', '2g'].includes(navigator.connection?.effectiveType)) return;
+  if (!video) return;
   const mq = window.matchMedia(MQ_RETRATO);
+  const selecionarFonte = () => {
+    video.classList.remove('is-tocando');
+    video.poster = mq.matches ? posterMobile : posterDesktop;
+    video.src = mq.matches ? videoMobile : videoDesktop;
+    video.load();
+  };
+  selecionarFonte();
+  if (reduce) { mq.addEventListener('change', selecionarFonte); return; }
+  if (navigator.connection?.saveData || ['slow-2g', '2g'].includes(navigator.connection?.effectiveType)) return;
   let visivel = true;
 
   video.preload = 'metadata';
@@ -42,11 +54,9 @@ function iniciarVideo(video, card, reduce) {
     if (p && p.catch) p.catch(() => {}); // autoplay bloqueado: fica o pôster
   };
 
-  // Troca de fonte (16:9 ↔ retrato) ao cruzar 768px: o <source media> é
-  // reavaliado no load().
+  // Seleção explícita de arquivo e pôster ao cruzar 768px.
   mq.addEventListener('change', () => {
-    video.classList.remove('is-tocando');
-    video.load();
+    selecionarFonte();
     tocar();
   });
 
