@@ -368,22 +368,22 @@ html.js-motion .areas-card {
 
 
 /* Compactação restrita ao modal, preservando a identidade do site. */
-.area-modal { font-size: 14px; }
+.area-modal { font-family: 'Barlow', sans-serif; font-size: 16px; }
 .area-modal h2, .area-modal h3 { color: inherit; }
-.area-modal p { line-height: 1.5; }
-.area-modal__hero { padding: 20px 80px 18px 30px; }
-.area-modal__hero h2 { font-size: clamp(25px, 2.3vw, 32px); margin: 0 0 8px; }
-.area-modal__grade { padding: 20px 30px; gap: 24px; }
-.area-modal h3 { font-size: 20px; margin: 6px 0 10px; }
+.area-modal p { line-height: 1.55; }
+.area-modal__hero { padding: 24px 80px 22px 32px; }
+.area-modal__hero h2 { font-size: clamp(28px, 2.5vw, 36px); margin: 0 0 8px; }
+.area-modal__grade { padding: 24px 32px; gap: 28px; }
+.area-modal h3 { font-size: 22px; margin: 8px 0 12px; }
 .area-modal__grade ol { margin-bottom: 10px; }
-.area-modal li { padding: 7px 0 7px 4px; line-height: 1.4; }
-.area-modal aside { padding: 16px 18px; }
-.area-modal .area-modal__rotulo { font-size: 10px; }
-.area-modal__nota { font-size: 12px; }
-.area-modal__duvida { padding: 16px 30px; }
-.area-modal summary { margin: 8px 0 6px; font-size: 18px; line-height: 1.35; }
-.area-modal__contato { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding: 18px 30px; }
-.area-modal__contato h3 { font-size: 20px; margin: 0 0 4px; }
+.area-modal li { padding: 8px 0 8px 4px; line-height: 1.45; }
+.area-modal aside { padding: 20px; }
+.area-modal .area-modal__rotulo { font-size: 11px; }
+.area-modal__nota { font-size: 14px; }
+.area-modal__duvida { padding: 20px 32px; }
+.area-modal summary { margin: 8px 0 6px; font-size: 20px; line-height: 1.4; }
+.area-modal__contato { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding: 22px 32px; }
+.area-modal__contato h3 { font-size: 22px; margin: 0 0 6px; }
 .area-modal .area-modal__whatsapp { display: inline-flex; flex: none; margin: 0; text-decoration: none; }
 .area-modal__whatsapp .nav-emerald-btn-wrapper { display: block; }
 .area-modal__whatsapp .nav-emerald-btn-text { padding: 13px 22px; font-size: 12px; letter-spacing: .08em; }
