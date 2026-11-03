@@ -346,7 +346,7 @@ html.js-motion .areas-card {
 .area-modal__contato { background: #102b46; color: #fff; }
 .area-modal__whatsapp { display: inline-block; margin: 20px 0 12px; padding: 14px 22px; background: #20cc68; color: #062217; font-weight: 600; }
 .area-modal :focus-visible { outline: 3px solid #b58b44; outline-offset: 4px; }
-@media (max-width: 650px) { .area-modal__grade { grid-template-columns: 1fr; gap: 24px; } 
+@media (max-width: 650px) { .area-modal__grade { grid-template-columns: 1fr; gap: 24px; } }
 .area-modal { overflow: hidden; }
 .area-modal__conteudo { max-height: calc(100dvh - 34px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .area-modal__hero { padding-top: 40px; padding-right: 88px; padding-bottom: 36px; }
@@ -365,3 +365,4 @@ html.js-motion .areas-card {
   .area-modal__hero { padding-top: 28px; padding-right: 72px; }
   .area-modal__fechar { top: 12px; right: 12px; }
 }
+
