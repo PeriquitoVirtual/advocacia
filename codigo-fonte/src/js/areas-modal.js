@@ -15,7 +15,7 @@ export function initAreasModal(section, { lenis }) {
   dialog.className = 'area-modal';
   dialog.setAttribute('aria-labelledby', 'area-modal-titulo');
   dialog.setAttribute('data-lenis-prevent', '');
-  dialog.innerHTML = '<div class="area-modal__barra"><span>Áreas de atuação</span><button type="button" autofocus aria-label="Fechar detalhes da área">Fechar <span aria-hidden="true">×</span></button></div><div class="area-modal__conteudo"></div>';
+  dialog.innerHTML = '<button class="area-modal__fechar" type="button" autofocus aria-label="Fechar detalhes da área"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div class="area-modal__conteudo"></div>';
   document.body.append(dialog);
   let opener;
   let overflow;
@@ -36,7 +36,7 @@ export function initAreasModal(section, { lenis }) {
       const key = button.dataset.area;
       const [title, intro, services, documents, question, answer] = areas[key];
       dialog.querySelector('.area-modal__conteudo').innerHTML = `
-        <header class="area-modal__hero"><p class="area-modal__rotulo">Izabella Almeida Andriani · OAB/GO 79.183</p><h2 id="area-modal-titulo">${title}</h2><p>${intro}</p></header>
+        <header class="area-modal__hero"><h2 id="area-modal-titulo">${title}</h2><p>${intro}</p></header>
         <div class="area-modal__grade"><section><p class="area-modal__rotulo">Como posso auxiliar</p><h3>Atuação em ${title.toLocaleLowerCase('pt-BR')}.</h3><ol>${services.map(service => `<li>${service}</li>`).join('')}</ol><p class="area-modal__nota">Cada situação é avaliada de forma individual. A definição das medidas depende da análise do caso e dos documentos disponíveis.</p></section>
         <aside><p class="area-modal__rotulo">Primeiro atendimento</p><h3>O que reunir para a análise</h3><p>${documents}</p><p>Se ainda não tiver todos os documentos, informe o que está disponível no primeiro contato.</p></aside></div>
         <section class="area-modal__duvida"><p class="area-modal__rotulo">Dúvida frequente</p><details open><summary>${question}</summary><p>${answer}</p></details></section>
@@ -46,7 +46,7 @@ export function initAreasModal(section, { lenis }) {
       document.body.style.overflow = 'hidden';
       lenis?.stop();
       dialog.showModal();
-      dialog.scrollTop = 0;
+      dialog.querySelector('.area-modal__conteudo').scrollTop = 0;
     });
   });
 }

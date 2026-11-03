@@ -328,9 +328,6 @@ html.js-motion .areas-card {
   font-family: var(--font-ui);
 }
 .area-modal::backdrop { background: rgb(2 13 24 / 82%); }
-.area-modal__barra { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 24px; background: #102b46; color: #fff; border-bottom: 1px solid #c5a56c; }
-.area-modal__barra button { min-height: 44px; padding: 8px 14px; border: 1px solid #c5a56c; border-radius: 4px; color: #fff; cursor: pointer; }
-.area-modal__barra button span { margin-left: 12px; font-size: 24px; }
 .area-modal__hero, .area-modal__grade, .area-modal__duvida, .area-modal__contato { padding: 32px clamp(20px, 4vw, 48px); }
 .area-modal__hero { background: #071b2c; color: #fff; }
 .area-modal h2 { margin: 12px 0 18px; font-family: Georgia, serif; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; text-transform: none; letter-spacing: normal; }
@@ -349,4 +346,22 @@ html.js-motion .areas-card {
 .area-modal__contato { background: #102b46; color: #fff; }
 .area-modal__whatsapp { display: inline-block; margin: 20px 0 12px; padding: 14px 22px; background: #20cc68; color: #062217; font-weight: 600; }
 .area-modal :focus-visible { outline: 3px solid #b58b44; outline-offset: 4px; }
-@media (max-width: 650px) { .area-modal__grade { grid-template-columns: 1fr; gap: 24px; } .area-modal__barra { padding: 10px 16px; } }
+@media (max-width: 650px) { .area-modal__grade { grid-template-columns: 1fr; gap: 24px; } 
+.area-modal { overflow: hidden; }
+.area-modal__conteudo { max-height: calc(100dvh - 34px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.area-modal__hero { padding-top: 40px; padding-right: 88px; padding-bottom: 36px; }
+.area-modal__hero h2 { margin-top: 0; }
+.area-modal__fechar {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  display: grid; place-items: center; width: 44px; height: 44px;
+  padding: 11px; border: 1px solid rgb(211 181 121 / 55%); border-radius: 50%;
+  background: #102b46; color: #ead5ad; cursor: pointer;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 16%);
+  transition: background-color .18s, color .18s, border-color .18s;
+}
+.area-modal__fechar svg { width: 20px; height: 20px; }
+.area-modal__fechar:hover { background: #d3b579; border-color: #d3b579; color: #071b2c; }
+@media (max-width: 650px) {
+  .area-modal__hero { padding-top: 28px; padding-right: 72px; }
+  .area-modal__fechar { top: 12px; right: 12px; }
+}
