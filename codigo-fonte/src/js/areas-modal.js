@@ -10,6 +10,7 @@ const areas = {
 };
 
 export function initAreasModal(section, { lenis }) {
+  const contactButton = document.querySelector('.topo-nav .nav-emerald').innerHTML;
   const dialog = document.createElement('dialog');
   dialog.id = 'area-modal';
   dialog.className = 'area-modal';
@@ -40,7 +41,7 @@ export function initAreasModal(section, { lenis }) {
         <div class="area-modal__grade"><section><p class="area-modal__rotulo">Como posso auxiliar</p><h3>Atuação em ${title.toLocaleLowerCase('pt-BR')}.</h3><ol>${services.map(service => `<li>${service}</li>`).join('')}</ol><p class="area-modal__nota">Cada situação é avaliada de forma individual. A definição das medidas depende da análise do caso e dos documentos disponíveis.</p></section>
         <aside><p class="area-modal__rotulo">Primeiro atendimento</p><h3>O que reunir para a análise</h3><p>${documents}</p><p>Se ainda não tiver todos os documentos, informe o que está disponível no primeiro contato.</p></aside></div>
         <section class="area-modal__duvida"><p class="area-modal__rotulo">Dúvida frequente</p><details open><summary>${question}</summary><p>${answer}</p></details></section>
-        <footer class="area-modal__contato"><h3>Vamos conversar sobre sua situação?</h3><p>Receba informações sobre o atendimento e os documentos necessários para uma análise individualizada.</p><a class="area-modal__whatsapp" href="${linkWhatsApp(key)}" target="_blank" rel="noopener noreferrer">Falar com a advogada ↗</a><p class="area-modal__nota">Goiânia/GO · Atendimento presencial e remoto, conforme a demanda.</p></footer>`;
+        <footer class="area-modal__contato"><div><h3>Converse com a advogada</h3><p class="area-modal__nota">Atendimento presencial em Goiânia e remoto, conforme a demanda.</p></div><a class="nav-emerald area-modal__whatsapp" href="${linkWhatsApp(key)}" target="_blank" rel="noopener noreferrer">${contactButton}</a></footer>`;
       opener = button;
       overflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';

@@ -344,7 +344,7 @@ html.js-motion .areas-card {
 .area-modal__duvida { background: #fff; }
 .area-modal summary { margin: 14px 0 8px; cursor: pointer; font-family: Georgia, serif; font-size: 20px; line-height: 1.5; }
 .area-modal__contato { background: #102b46; color: #fff; }
-.area-modal__whatsapp { display: inline-block; margin: 20px 0 12px; padding: 14px 22px; background: #20cc68; color: #062217; font-weight: 600; }
+
 .area-modal :focus-visible { outline: 3px solid #b58b44; outline-offset: 4px; }
 @media (max-width: 650px) { .area-modal__grade { grid-template-columns: 1fr; gap: 24px; } }
 .area-modal { overflow: hidden; }
@@ -366,3 +366,30 @@ html.js-motion .areas-card {
   .area-modal__fechar { top: 12px; right: 12px; }
 }
 
+
+/* Compactação restrita ao modal, preservando a identidade do site. */
+.area-modal { font-size: 14px; }
+.area-modal h2, .area-modal h3 { color: inherit; }
+.area-modal p { line-height: 1.5; }
+.area-modal__hero { padding: 20px 80px 18px 30px; }
+.area-modal__hero h2 { font-size: clamp(25px, 2.3vw, 32px); margin: 0 0 8px; }
+.area-modal__grade { padding: 20px 30px; gap: 24px; }
+.area-modal h3 { font-size: 20px; margin: 6px 0 10px; }
+.area-modal__grade ol { margin-bottom: 10px; }
+.area-modal li { padding: 7px 0 7px 4px; line-height: 1.4; }
+.area-modal aside { padding: 16px 18px; }
+.area-modal .area-modal__rotulo { font-size: 10px; }
+.area-modal__nota { font-size: 12px; }
+.area-modal__duvida { padding: 16px 30px; }
+.area-modal summary { margin: 8px 0 6px; font-size: 18px; line-height: 1.35; }
+.area-modal__contato { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding: 18px 30px; }
+.area-modal__contato h3 { font-size: 20px; margin: 0 0 4px; }
+.area-modal .area-modal__whatsapp { display: inline-flex; flex: none; margin: 0; text-decoration: none; }
+.area-modal__whatsapp .nav-emerald-btn-wrapper { display: block; }
+.area-modal__whatsapp .nav-emerald-btn-text { padding: 13px 22px; font-size: 12px; letter-spacing: .08em; }
+@media (max-width: 650px) {
+  .area-modal__hero { padding: 20px 68px 16px 20px; }
+  .area-modal__grade { padding: 18px 20px; gap: 16px; }
+  .area-modal__duvida { padding: 16px 20px; }
+  .area-modal__contato { padding: 18px 20px; flex-wrap: wrap; }
+}
