@@ -1,5 +1,5 @@
 // Mensagens por assunto para os botões de WhatsApp.
-export const WHATSAPP = "5562999190428";
+export const WHATSAPP = "5562986242019";
 export const MENSAGENS = {
   "padrao": "Olá, Izabella! Vim pelo site e gostaria de informações sobre o atendimento jurídico.",
   "nav": "Olá, Izabella! Gostaria de informações sobre seu atendimento jurídico.",
