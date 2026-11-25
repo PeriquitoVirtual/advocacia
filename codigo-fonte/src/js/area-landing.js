@@ -57,6 +57,13 @@ export default function initAreaLanding() {
   const heroCard = top?.querySelector('.topo-card');
   if (!top || !heroCard) return;
 
+  if (!document.querySelector('link[href$="/area-landing.css"]')) {
+    const styles = document.createElement('link');
+    styles.rel = 'stylesheet';
+    styles.href = '/codigo-fonte/src/styles/area-landing.css';
+    document.head.append(styles);
+  }
+
   document.body.classList.add('area-destino');
   document.body.classList.add(`area-destino--${requestedArea}`);
   top.insertBefore(renderDestination(destination), heroCard);
