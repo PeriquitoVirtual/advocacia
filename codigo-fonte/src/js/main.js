@@ -29,6 +29,7 @@ import '../styles/paleta-marinho.css';
 
 import { linkWhatsApp } from './config.js';
 import initMedicao from './medicao.js';
+import initAreaLanding from './area-landing.js';
 import {
   contadores,
   desktop,
@@ -53,6 +54,7 @@ import contato from './sections/contato.js';
 
 const DOBRAS = { topo, pilares, sobre, areas, metodo, equipe, duvidas, contato };
 initMedicao();
+initAreaLanding();
 
 // Links de WhatsApp: <a data-wa="contexto">
 document.querySelectorAll('[data-wa]').forEach((a) => {
