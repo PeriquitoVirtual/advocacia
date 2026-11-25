@@ -1,0 +1,42 @@
+/* Focused entry views for the Criminal and Labor ad destinations. */
+body.area-destino #topo { grid-template-columns: minmax(0, 1fr); }
+body.area-destino #topo > .topo-card[hidden] { display: none; }
+.area-landing {
+  display: grid;
+  gap: 18px;
+  width: min(100%, 1240px);
+  margin: 24px auto 0;
+  padding: clamp(20px, 4vw, 52px);
+  border: 1px solid rgb(211 181 121 / 38%);
+  border-radius: 10px;
+  background: linear-gradient(145deg, #102b46 0%, #071b2c 72%);
+  color: #f5f0e7;
+}
+.area-landing__intro { display: grid; justify-items: start; gap: 14px; max-width: 780px; }
+.area-landing__eyebrow { color: #d3b579; font-size: .875rem; letter-spacing: .1em; line-height: 1.5; text-transform: uppercase; }
+.area-landing__intro h1 {
+  margin: 0;
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.08;
+  text-transform: none;
+}
+.area-landing__lead { max-width: 60ch; color: #e1e8ee; font-size: clamp(1.0625rem, 1.7vw, 1.25rem); line-height: 1.6; }
+.area-landing__location { color: #bdcbd8; font-size: 1rem; line-height: 1.5; }
+.area-landing__quick-contact { margin-top: 4px; text-decoration: none; }
+.area-landing__details.area-modal {
+  width: 100%;
+  max-width: 1120px;
+  max-height: none;
+  margin: 2px auto 0;
+  overflow: visible;
+  color: #182c39;
+}
+@media (max-width: 650px) {
+  .area-landing { margin-top: 12px; padding: 18px 14px; gap: 14px; }
+  .area-landing__eyebrow { font-size: .75rem; }
+  .area-landing__intro { gap: 11px; }
+}
